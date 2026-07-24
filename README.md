@@ -9,11 +9,23 @@ created before the protocol is preserved under
 
 ## Current status
 
-Stage 1 establishes repository, protocol, configuration, hashing, provenance,
-testing, and environment foundations.
+Stage 1 established the repository, protocol, deterministic configuration,
+hashing, provenance, test, and archive infrastructure.
 
-No definitive sphere graph has been generated, no encoding instance has been
-solved, and no definitive encoder has been trained.
+Stage 2, Canonical Sphere Graphs, is complete. The definitive suite contains
+four icosphere triangulation graphs and nine primitive integer-direction
+graphs, for 13 canonical graph instances in total.
+
+The definitive Stage 2 run is:
+
+`stage2-canonical-graphs-b0acb6e8683a-f2baeb7dbb50`
+
+Its 81-file deterministic package, 81-member archive, and manifest were
+independently reproduced byte-for-byte and committed at
+`23a5669125e0bfb71e71330bde6bcf9d7ae25723`.
+
+Stage 3 has not started. No definitive encoding metrics, baseline encoders,
+optimisation results, solver bounds, or neural-encoder results exist yet.
 
 ## Environment
 

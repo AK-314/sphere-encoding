@@ -16,13 +16,21 @@ authoritative Stage 1 foundation commit and final acceptance audit.
 
 ## Current stage
 
-Stage 2 of 13: Canonical Sphere Graphs.
+Stage 2 of 13, Canonical Sphere Graphs, is complete.
 
-Stage 1 is accepted at commit
+Stage 1 remains accepted at commit
 `05b2b96ef1e86fc2505d33cd0c5c916090267335`.
 
-Stage 2 has started with a prospective configuration freeze only. No canonical
-graph has yet been generated, and no Stage 3 metric or encoding work has begun.
+The definitive Stage 2 graph suite was generated from the clean committed
+implementation at `f2baeb7dbb50676051c85fa562f2ead89a5c65c9` and committed at
+`23a5669125e0bfb71e71330bde6bcf9d7ae25723`.
+
+The definitive run identifier is:
+
+`stage2-canonical-graphs-b0acb6e8683a-f2baeb7dbb50`
+
+Stage 3 has not started. No definitive encoding metric, baseline encoding,
+optimisation, solver, or neural-encoder result has been generated.
 
 ## Repository history
 
@@ -92,13 +100,19 @@ The following claims are currently permitted:
 - pre-protocol work is preserved and inventoried;
 - deterministic configuration, hashing, atomic writing, environment capture,
   repository capture, and manifest-writing helpers are implemented and tested;
-- the project has frozen its primary metric, graph families, code-length grid,
-  validity requirements, mandatory diagnostics, and evidential interpretation;
-- no definitive graph or encoding result exists yet.
+- the primary and secondary Stage 2 graph families were frozen prospectively;
+- four canonical icosphere triangulation graphs were generated and validated;
+- nine canonical primitive integer-direction graphs were generated and
+  validated using the frozen tie-complete symmetric neighbourhood rule;
+- all 13 definitive graph instances were serialized deterministically,
+  manifested, hashed, archived, and independently reproduced byte-for-byte;
+- the Stage 2 graph suite is an accepted experimental-input package, not an
+  encoding-performance result;
+- no Stage 3 encoding result exists yet.
 
 The following claims are not currently permitted:
 
-- that \(L_{\max}=4\) has been validated;
+- that \(L_{\max}=4\) has been validated definitively;
 - that \(q=3,\ k=6\) is the primary experimental condition;
 - that any current codebook is optimal;
 - that any solver-certified lower bound exists;
@@ -217,7 +231,13 @@ Implemented:
 - `uv` lock file;
 - manifests, results, archives, scripts, and test directories.
 
-The authoritative scientific algorithm modules do not yet exist.
+Authoritative Stage 2 scientific modules now exist for deterministic
+icosphere construction, primitive integer-direction generation, tie-complete
+symmetric neighbourhood construction, structural validation, deterministic
+serialization, archive creation, and definitive Stage 2 execution.
+
+The definitive Stage 2 implementation identity is
+`f2baeb7dbb50676051c85fa562f2ead89a5c65c9`.
 
 ## Environment state
 
@@ -237,7 +257,7 @@ pre-protocol exploratory script are not authoritative Stage 1 dependencies.
 
 ## Known limitations
 
-- no canonical icosphere graph has been generated;
+- no definitive encoding metric or baseline result has been generated;
 - the secondary neighbourhood grid is frozen prospectively, but no definitive secondary graph has yet been generated;
 - no exact solver has been selected;
 - no solver certificate or lower bound exists;
@@ -259,8 +279,55 @@ pre-protocol exploratory script are not authoritative Stage 1 dependencies.
 - Neural encoder trained: no.
 - Definitive scientific tables generated: no.
 - Definitive scientific figures generated: no.
-- Stage 2 outputs present: no.
-- Stage 2 started: yes, configuration freeze only.
+- Stage 2 outputs present: yes, 83 committed output files.
+- Stage 2 complete: yes; Stage 3 has not started.
+
+## Stage 2 completion record
+
+Stage 2 was completed through four controlled commits:
+
+1. prospective graph-suite freeze:
+   `b666da99febaf07c003dbfd0d5118518b9f32e35`;
+2. deterministic graph-generator implementation:
+   `24b2d10d7d116df8a3a3f184613a631b2ae1b02c`;
+3. deterministic artifact and definitive-run pipeline:
+   `f2baeb7dbb50676051c85fa562f2ead89a5c65c9`;
+4. definitive graph-suite outputs:
+   `23a5669125e0bfb71e71330bde6bcf9d7ae25723`.
+
+Definitive identity:
+
+- run ID: `stage2-canonical-graphs-b0acb6e8683a-f2baeb7dbb50`;
+- primary graphs: four icosphere triangulation graphs, levels 0 through 3;
+- secondary graphs: nine primitive integer-direction graphs from
+  \(q\in\{2,3,4\}\) and nominal \(k\in\{4,6,8\}\);
+- total graph count: 13;
+- deterministic package files: 81;
+- deterministic archive members: 81;
+- total committed Stage 2 output files: 83;
+- configuration SHA-256: `b0acb6e8683a7d10cff99891c7346043de0ee7b3a0087cf71545d5df299eef01`;
+- package-tree SHA-256: `24208510f0cc946ac3f5fc1108367234654ab95af685c2ffc41f1b39d3562ea7`;
+- archive SHA-256: `30ff508a8b87c22808d6448fd7147017d6f65d8b52bb22b77b6b5304f8610a71`.
+
+Acceptance evidence:
+
+- all 13 graphs passed structural and geometric validation;
+- graph identifiers and canonical ordering were stable;
+- all package files were individually hashed and manifested;
+- the deterministic archive metadata and member set were audited;
+- independent regeneration reproduced every package file and the archive
+  byte-for-byte;
+- 68 tests passed;
+- Ruff passed;
+- `git diff --check` passed;
+- the repository was clean after the output commit;
+- no Stage 3 implementation or execution was present.
+
+Scientific interpretation:
+
+The Stage 2 outputs define canonical experimental domains for later encoding
+work. They establish no encoding-performance upper bound, lower bound,
+optimality claim, or comparison between encoding classes.
 
 ## Active Stage 2 configuration
 
