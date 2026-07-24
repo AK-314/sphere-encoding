@@ -258,7 +258,7 @@ pre-protocol exploratory script are not authoritative Stage 1 dependencies.
 ## Known limitations
 
 - no definitive encoding metric or baseline result has been generated;
-- the secondary neighbourhood grid is frozen prospectively, but no definitive secondary graph has yet been generated;
+- the definitive secondary suite is restricted to the frozen \(q\in\{2,3,4\}\), nominal \(k\in\{4,6,8\}\) grid;
 - no exact solver has been selected;
 - no solver certificate or lower bound exists;
 - no large-instance heuristic budget has been frozen;
