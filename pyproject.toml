@@ -4,7 +4,9 @@ version = "0.1.0"
 description = "Reproducible infrastructure for binary encodings of finite sphere point sets."
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "numpy>=2.0,<3",
+]
 
 [dependency-groups]
 dev = [
