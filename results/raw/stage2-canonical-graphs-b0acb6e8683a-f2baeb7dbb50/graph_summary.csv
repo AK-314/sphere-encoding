@@ -1,0 +1,14 @@
+graph_id,family,q,nominal_k,subdivision_level,vertex_count,edge_count,face_count,minimum_bits,minimum_degree,maximum_degree,antipodal_pair_count,edge_length_class_count,tie_completion_extra_selection_total,symmetrisation_degree_gain_total
+icosphere_l0,icosphere_triangulation,,,0,12,30,20,4,5,5,6,1,,
+icosphere_l1,icosphere_triangulation,,,1,42,120,80,6,5,6,21,2,,
+icosphere_l2,icosphere_triangulation,,,2,162,480,320,8,5,6,81,5,,
+icosphere_l3,icosphere_triangulation,,,3,642,1920,1280,10,5,6,321,15,,
+primitive_q2_knn4,primitive_integer_directions,2,4,,98,264,,7,4,6,49,,88,48
+primitive_q2_knn6,primitive_integer_directions,2,6,,98,336,,7,6,8,49,,60,24
+primitive_q2_knn8,primitive_integer_directions,2,8,,98,444,,7,8,10,49,,56,48
+primitive_q3_knn4,primitive_integer_directions,3,4,,290,744,,9,4,7,145,,64,264
+primitive_q3_knn6,primitive_integer_directions,3,6,,290,1104,,9,6,9,145,,132,336
+primitive_q3_knn8,primitive_integer_directions,3,8,,290,1416,,9,8,11,145,,176,336
+primitive_q4_knn4,primitive_integer_directions,4,4,,578,1416,,10,4,8,289,,88,432
+primitive_q4_knn6,primitive_integer_directions,4,6,,578,2184,,10,6,10,289,,204,696
+primitive_q4_knn8,primitive_integer_directions,4,8,,578,2736,,10,8,11,289,,200,648

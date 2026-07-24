@@ -1,0 +1,50 @@
+{
+  "array_files": {
+    "directed_indices.npy": "7af394d5dbe0fac5e7995962230dcbd2f5e206027156b58b916cbe433add0722",
+    "directed_offsets.npy": "fd6022e50b1a7325740cd485440e22616f78fe1218d478e7d7ec8e14f0f063e9",
+    "edges.npy": "c27251a2e1933169e966b4b3da675e4dbe4ab579106358afd1e46717cc365860",
+    "integer_vectors.npy": "a776316ac84b15f78ad923c1d967b3a4f6a175bf76b6150e77756b028a4cc262",
+    "threshold_angles.npy": "622f83ad3cc5ad9e8676cd81e504aba8e6334a4f915ab8bcd6446f0fda11d03d",
+    "vertices.npy": "d036e4e1fb9f5453339158a9d1a0123cc22e1e7b2cd18fdc54ace1ce96ef8493"
+  },
+  "config_sha256": "b0acb6e8683a7d10cff99891c7346043de0ee7b3a0087cf71545d5df299eef01",
+  "construction": {
+    "angular_tie_atol_radians": 1e-12,
+    "integer_vector_ordering": "lexicographic_xyz",
+    "neighbourhood": "tie_complete_symmetric_angular_knn",
+    "nominal_k": 4,
+    "opposite_vectors_distinct": true,
+    "oriented_vectors": true,
+    "q": 4
+  },
+  "diagnostics": {
+    "antipodal_pair_count": 289,
+    "connected": true,
+    "degree_histogram": {
+      "4": 246,
+      "5": 216,
+      "6": 68,
+      "7": 24,
+      "8": 24
+    },
+    "directed_selection_count_maximum": 6,
+    "directed_selection_count_minimum": 4,
+    "edge_count": 1416,
+    "maximum_degree": 8,
+    "maximum_edge_angle": 0.24979633052107694,
+    "minimum_bits": 10,
+    "minimum_degree": 4,
+    "minimum_edge_angle": 0.04710557971040516,
+    "nominal_k": 4,
+    "q": 4,
+    "symmetrisation_degree_gain_total": 432,
+    "threshold_angle_maximum": 0.24979633052107694,
+    "threshold_angle_minimum": 0.1343214419529691,
+    "tie_completion_extra_selection_total": 88,
+    "vertex_count": 578
+  },
+  "family": "primitive_integer_directions",
+  "graph_id": "primitive_q4_knn4",
+  "schema_version": 1,
+  "stage": 2
+}

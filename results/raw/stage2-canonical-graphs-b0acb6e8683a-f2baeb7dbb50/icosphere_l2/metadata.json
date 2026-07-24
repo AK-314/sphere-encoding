@@ -1,0 +1,39 @@
+{
+  "array_files": {
+    "edges.npy": "d3f1b1d5cb25e9839f9600db574843e1ec862dc64f904ba14aebc4e044b0149d",
+    "faces.npy": "f015a1db8b58c6d7f0584bce6c43afbad9f613aca83c6061c52892c97511487f",
+    "vertices.npy": "4292062bf6fcaaa83c6d6f23ddfaddaf41fbf4800962d991e02ccd64a811c673"
+  },
+  "config_sha256": "b0acb6e8683a7d10cff99891c7346043de0ee7b3a0087cf71545d5df299eef01",
+  "construction": {
+    "canonical_ordering": "explicit base ordering followed by deterministic face-order subdivision with canonical undirected midpoint keys",
+    "subdivision_level": 2
+  },
+  "diagnostics": {
+    "antipodal_pair_count": 81,
+    "connected": true,
+    "degree_histogram": {
+      "5": 12,
+      "6": 150
+    },
+    "edge_count": 480,
+    "edge_length_class_count": 5,
+    "face_count": 320,
+    "maximum_degree": 6,
+    "maximum_edge_angle": 0.32636622180660874,
+    "minimum_bits": 8,
+    "minimum_degree": 5,
+    "minimum_edge_angle": 0.2767871794485222,
+    "subdivision_level": 2,
+    "topology_checks": {
+      "edge_incidence_two": true,
+      "euler_characteristic_two": true,
+      "outward_faces": true
+    },
+    "vertex_count": 162
+  },
+  "family": "icosphere_triangulation",
+  "graph_id": "icosphere_l2",
+  "schema_version": 1,
+  "stage": 2
+}
