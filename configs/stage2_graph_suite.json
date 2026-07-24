@@ -1,0 +1,95 @@
+{
+  "archive": {
+    "format": "tar.gz",
+    "gzip_mtime": 0,
+    "member_gid": 0,
+    "member_gname": "",
+    "member_mtime": 0,
+    "member_order": "lexicographic_relative_path",
+    "member_uid": 0,
+    "member_uname": ""
+  },
+  "primary": {
+    "canonical_ordering": "explicit base ordering followed by deterministic face-order subdivision with canonical undirected midpoint keys",
+    "expected_instances": {
+      "icosphere_l0": {
+        "edges": 30,
+        "faces": 20,
+        "minimum_bits": 4,
+        "subdivision_level": 0,
+        "vertices": 12
+      },
+      "icosphere_l1": {
+        "edges": 120,
+        "faces": 80,
+        "minimum_bits": 6,
+        "subdivision_level": 1,
+        "vertices": 42
+      },
+      "icosphere_l2": {
+        "edges": 480,
+        "faces": 320,
+        "minimum_bits": 8,
+        "subdivision_level": 2,
+        "vertices": 162
+      },
+      "icosphere_l3": {
+        "edges": 1920,
+        "faces": 1280,
+        "minimum_bits": 10,
+        "subdivision_level": 3,
+        "vertices": 642
+      }
+    },
+    "family": "icosphere_triangulation",
+    "subdivision_levels": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "schema_version": 1,
+  "secondary": {
+    "coordinate_bounds": [
+      2,
+      3,
+      4
+    ],
+    "expected_point_counts": {
+      "2": 98,
+      "3": 290,
+      "4": 578
+    },
+    "family": "primitive_integer_directions",
+    "integer_vector_ordering": "lexicographic_xyz",
+    "neighbourhood": "tie_complete_symmetric_angular_knn",
+    "nominal_k_values": [
+      4,
+      6,
+      8
+    ],
+    "opposite_vectors_distinct": true,
+    "oriented_vectors": true
+  },
+  "serialization": {
+    "allow_pickle": false,
+    "array_format": "npy",
+    "edge_dtype": "int64",
+    "face_dtype": "int64",
+    "floating_dtype": "float64",
+    "integer_vector_dtype": "int64",
+    "metadata_format": "canonical_pretty_json",
+    "summary_format": "csv_utf8_lf"
+  },
+  "stage": 2,
+  "stage_name": "Canonical Sphere Graphs",
+  "tolerances": {
+    "angular_tie_atol_radians": 1e-12,
+    "antipodal_atol": 1e-12,
+    "duplicate_vertex_atol": 1e-12,
+    "edge_length_class_atol_radians": 1e-12,
+    "face_orientation_atol": 1e-15,
+    "unit_norm_atol": 1e-12
+  }
+}

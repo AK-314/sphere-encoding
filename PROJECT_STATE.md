@@ -16,12 +16,13 @@ authoritative Stage 1 foundation commit and final acceptance audit.
 
 ## Current stage
 
-Stage 1 of 13: Repository Baseline and Protocol Foundation.
+Stage 2 of 13: Canonical Sphere Graphs.
 
-Implementation is complete in the working tree and remains subject to final
-staging, commit, and forensic acceptance checks.
+Stage 1 is accepted at commit
+`05b2b96ef1e86fc2505d33cd0c5c916090267335`.
 
-Stage 2 has not started.
+Stage 2 has started with a prospective configuration freeze only. No canonical
+graph has yet been generated, and no Stage 3 metric or encoding work has begun.
 
 ## Repository history
 
@@ -125,10 +126,16 @@ Icosphere triangulation graphs.
 
 ### Secondary graph family
 
-Primitive integer-direction sphere sets evaluated across a prespecified
-neighbourhood grid.
+Primitive integer-direction sphere sets with:
 
-The prior \(q=3,\ k=6\) condition is not privileged.
+- \(q\in\{2,3,4\}\);
+- nominal \(k\in\{4,6,8\}\);
+- oriented vectors with antipodal partners retained;
+- tie-complete symmetric angular nearest-neighbour construction;
+- deterministic lexicographic integer-vector ordering.
+
+The angular tie tolerance is frozen at \(10^{-12}\) radians. The prior
+\(q=3,\ k=6\) condition is not privileged.
 
 ### Code-length candidates
 
@@ -231,7 +238,7 @@ pre-protocol exploratory script are not authoritative Stage 1 dependencies.
 ## Known limitations
 
 - no canonical icosphere graph has been generated;
-- no definitive secondary neighbourhood grid has been frozen yet;
+- the secondary neighbourhood grid is frozen prospectively, but no definitive secondary graph has yet been generated;
 - no exact solver has been selected;
 - no solver certificate or lower bound exists;
 - no large-instance heuristic budget has been frozen;
@@ -253,22 +260,36 @@ pre-protocol exploratory script are not authoritative Stage 1 dependencies.
 - Definitive scientific tables generated: no.
 - Definitive scientific figures generated: no.
 - Stage 2 outputs present: no.
-- Stage 2 started: no.
+- Stage 2 started: yes, configuration freeze only.
+
+## Active Stage 2 configuration
+
+The prospective Stage 2 graph suite is recorded in
+`configs/stage2_graph_suite.json`.
+
+Frozen primary instances:
+
+- `icosphere_l0`;
+- `icosphere_l1`;
+- `icosphere_l2`;
+- `icosphere_l3`.
+
+Frozen secondary instances are the Cartesian product of:
+
+- \(q\in\{2,3,4\}\);
+- nominal \(k\in\{4,6,8\}\).
+
+This yields nine primitive-direction graph instances using tie-complete
+symmetric angular nearest-neighbour construction.
+
+No definitive graph output existed when this configuration was frozen.
 
 ## Next stage
 
-Stage 2 of 13: Canonical Sphere Graphs.
+Stage 3 of 13: Metrics and Baseline Encodings.
 
-Stage 2 may begin only after:
+Stage 3 may begin only after Stage 2 graph generation, validation, deterministic
+archiving, independent reproduction, scientific-output commit, and acceptance
+by the main project chat.
 
-- the Stage 1 foundation commit succeeds;
-- all tests pass;
-- Ruff passes;
-- whitespace checks pass;
-- the exact committed file set is recorded;
-- the final working tree is clean;
-- the Stage 1 completion report is accepted by the main project chat.
-
-Stage 2 must create deterministic and validated graph inputs only.
-
-It must stop before Stage 3 metrics and baseline encodings.
+Stage 3 has not started.

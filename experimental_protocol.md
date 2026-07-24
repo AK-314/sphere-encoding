@@ -102,6 +102,29 @@ as the sole secondary graph because of its preliminary results.
 The neighbourhood grid and included \(q\) values must be frozen in Stage 2
 before definitive encoding optimisation begins.
 
+#### Stage 2 prospective graph-suite resolution
+
+Before any definitive Stage 2 graph was generated, the secondary graph suite
+was frozen prospectively as:
+
+- coordinate bounds \(q\in\{2,3,4\}\);
+- nominal neighbour counts \(k\in\{4,6,8\}\);
+- oriented primitive integer vectors, with antipodal vectors retained as
+  distinct points;
+- tie-complete symmetric angular nearest-neighbour construction;
+- deterministic lexicographic integer-vector ordering.
+
+For each vertex, the nominal \(k\)-th angular-distance threshold includes every
+point tied within an absolute angular tolerance of \(10^{-12}\) radians. The
+undirected graph is then the union of all directed selections. This rule is
+prospective and must not be replaced by exact-\(k\) truncation to reproduce an
+exploratory edge count.
+
+The complete Stage 2 configuration, expected graph counts, serialization rules,
+archive rules, and numerical tolerances are frozen in
+`configs/stage2_graph_suite.json`. No encoding outcome had been generated or
+inspected when this resolution was recorded.
+
 ### 4.3 Optional higher-dimensional family
 
 Experiments on \(S^3\) are optional and remain pending. They may proceed only
