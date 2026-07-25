@@ -64,6 +64,7 @@ class ExactSolveResult:
     conflict_count: int
     branch_count: int
     response_stats: str
+    solver_log: str
     codebook: np.ndarray | None
     validation: WitnessValidation | None
     has_feasible_witness: bool
@@ -330,6 +331,10 @@ def solve_exact_feasibility_model(
     solver.parameters.cp_model_presolve = cp_model_presolve
     solver.parameters.log_search_progress = log_search_progress
 
+    log_messages: list[str] = []
+    if log_search_progress:
+        solver.log_callback = log_messages.append
+
     raw_status = solver.Solve(built.model)
     interpretation = interpret_solver_status(int(raw_status))
 
@@ -356,6 +361,7 @@ def solve_exact_feasibility_model(
         conflict_count=int(solver.NumConflicts()),
         branch_count=int(solver.NumBranches()),
         response_stats=str(solver.ResponseStats()),
+        solver_log="".join(log_messages),
         codebook=codebook,
         validation=validation,
         has_feasible_witness=interpretation.has_feasible_witness,

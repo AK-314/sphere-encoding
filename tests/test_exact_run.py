@@ -73,6 +73,9 @@ def execution(
         conflict_count=0,
         branch_count=0,
         response_stats="stats",
+        solver_log="log",
+        model_bytes=b"model",
+        witness_codebook=None,
         has_feasible_witness=status in {
             ExactSolverStatus.OPTIMAL,
             ExactSolverStatus.FEASIBLE,

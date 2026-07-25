@@ -37,6 +37,7 @@ class ExactFeasibilityModel:
     symmetry_breaking: bool
     first_neighbour: int | None
     model_sha256: str
+    model_bytes: bytes
     variable_count: int
     constraint_count: int
 
@@ -438,6 +439,7 @@ def build_exact_feasibility_model(
         symmetry_breaking=symmetry_breaking,
         first_neighbour=first_neighbour,
         model_sha256=hashlib.sha256(serialised).hexdigest(),
+        model_bytes=serialised,
         variable_count=len(proto.variables),
         constraint_count=len(proto.constraints),
     )

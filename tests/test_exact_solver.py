@@ -142,6 +142,7 @@ def test_feasible_path_witness_is_extracted_and_validated() -> None:
     assert result.conflict_count >= 0
     assert result.branch_count >= 0
     assert result.response_stats
+    assert result.solver_log == ""
 
 
 def test_infeasible_triangle_target_certifies_lower_bound() -> None:

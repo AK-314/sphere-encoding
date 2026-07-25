@@ -43,6 +43,9 @@ class TargetExecution:
     conflict_count: int
     branch_count: int
     response_stats: str
+    solver_log: str
+    model_bytes: bytes
+    witness_codebook: np.ndarray | None
     has_feasible_witness: bool
     certifies_infeasibility: bool
     witness_l_max: int | None
@@ -203,6 +206,9 @@ def execute_instance_plan(
             conflict_count=result.conflict_count,
             branch_count=result.branch_count,
             response_stats=result.response_stats,
+            solver_log=result.solver_log,
+            model_bytes=built.model_bytes,
+            witness_codebook=result.codebook,
             has_feasible_witness=result.has_feasible_witness,
             certifies_infeasibility=result.certifies_infeasibility,
             witness_l_max=(
