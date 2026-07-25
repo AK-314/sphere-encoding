@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import csv
 import hashlib
+import io
 from pathlib import Path
 from typing import Any
 
@@ -10,6 +12,57 @@ from sphere_encoding.config import pretty_json_dumps
 from sphere_encoding.exact.run import InstanceExecution, TargetExecution
 from sphere_encoding.graphs.artifacts import collect_file_hashes, npy_bytes
 from sphere_encoding.provenance import atomic_write_bytes, atomic_write_text
+
+TARGET_FIELDS = (
+    "execution_order",
+    "graph_id",
+    "code_length",
+    "target_order_within_instance",
+    "target_r",
+    "budget_seconds",
+    "status",
+    "model_sha256",
+    "variable_count",
+    "constraint_count",
+    "wall_time_seconds",
+    "user_time_seconds",
+    "conflict_count",
+    "branch_count",
+    "has_feasible_witness",
+    "certifies_infeasibility",
+    "witness_l_max",
+    "witness_codebook_sha256",
+)
+
+INSTANCE_FIELDS = (
+    "execution_order",
+    "graph_id",
+    "code_length",
+    "classification",
+    "structural_lower_bound",
+    "baseline_upper_bound",
+    "final_lower_bound",
+    "final_upper_bound",
+    "targets_planned",
+    "targets_attempted",
+    "unknown_target_count",
+)
+
+EXACT_FIELDS = (
+    "execution_order",
+    "graph_id",
+    "code_length",
+    "exact_l_star_free",
+)
+
+GAP_FIELDS = (
+    "execution_order",
+    "graph_id",
+    "code_length",
+    "baseline_upper_bound",
+    "final_upper_bound",
+    "baseline_gap_closed",
+)
 
 
 def _target_payload(execution: TargetExecution) -> dict[str, Any]:
@@ -129,3 +182,131 @@ def write_instance_artifacts(
         raise
 
     return collect_file_hashes(destination)
+
+
+def _csv_bytes(
+    fieldnames: tuple[str, ...],
+    rows: list[dict[str, Any]],
+) -> bytes:
+    stream = io.StringIO(newline="")
+    writer = csv.DictWriter(
+        stream,
+        fieldnames=fieldnames,
+        lineterminator="\n",
+    )
+    writer.writeheader()
+    writer.writerows(rows)
+    return stream.getvalue().encode("utf-8")
+
+
+def write_stage4_tables(
+    table_root: Path,
+    *,
+    run_id: str,
+    executions: tuple[InstanceExecution, ...],
+) -> dict[str, str]:
+    """Write the four frozen Stage 4 result tables."""
+
+    if not run_id.startswith("stage4-"):
+        raise ValueError("invalid Stage 4 run identifier")
+    orders = tuple(item.execution_order for item in executions)
+    if orders != tuple(sorted(orders)) or len(set(orders)) != len(orders):
+        raise ValueError("instance executions are not uniquely ordered")
+
+    target_rows: list[dict[str, Any]] = []
+    instance_rows: list[dict[str, Any]] = []
+    exact_rows: list[dict[str, Any]] = []
+    gap_rows: list[dict[str, Any]] = []
+
+    for instance in executions:
+        for target in instance.executions:
+            target_rows.append(
+                {
+                    "execution_order": instance.execution_order,
+                    "graph_id": instance.graph_id,
+                    "code_length": instance.code_length,
+                    "target_order_within_instance": (
+                        target.target_order_within_instance
+                    ),
+                    "target_r": target.target_r,
+                    "budget_seconds": target.budget_seconds,
+                    "status": target.status.value,
+                    "model_sha256": target.model_sha256,
+                    "variable_count": target.variable_count,
+                    "constraint_count": target.constraint_count,
+                    "wall_time_seconds": target.wall_time_seconds,
+                    "user_time_seconds": target.user_time_seconds,
+                    "conflict_count": target.conflict_count,
+                    "branch_count": target.branch_count,
+                    "has_feasible_witness": target.has_feasible_witness,
+                    "certifies_infeasibility": (
+                        target.certifies_infeasibility
+                    ),
+                    "witness_l_max": (
+                        ""
+                        if target.witness_l_max is None
+                        else target.witness_l_max
+                    ),
+                    "witness_codebook_sha256": (
+                        target.witness_codebook_sha256 or ""
+                    ),
+                }
+            )
+
+        instance_rows.append(
+            {
+                "execution_order": instance.execution_order,
+                "graph_id": instance.graph_id,
+                "code_length": instance.code_length,
+                "classification": instance.classification.value,
+                "structural_lower_bound": (
+                    instance.structural_lower_bound
+                ),
+                "baseline_upper_bound": instance.baseline_upper_bound,
+                "final_lower_bound": instance.final_lower_bound,
+                "final_upper_bound": instance.final_upper_bound,
+                "targets_planned": instance.targets_planned,
+                "targets_attempted": instance.targets_attempted,
+                "unknown_target_count": instance.unknown_target_count,
+            }
+        )
+        if instance.classification.value == "exact":
+            exact_rows.append(
+                {
+                    "execution_order": instance.execution_order,
+                    "graph_id": instance.graph_id,
+                    "code_length": instance.code_length,
+                    "exact_l_star_free": instance.final_upper_bound,
+                }
+            )
+        gap_rows.append(
+            {
+                "execution_order": instance.execution_order,
+                "graph_id": instance.graph_id,
+                "code_length": instance.code_length,
+                "baseline_upper_bound": instance.baseline_upper_bound,
+                "final_upper_bound": instance.final_upper_bound,
+                "baseline_gap_closed": (
+                    instance.baseline_upper_bound
+                    - instance.final_upper_bound
+                ),
+            }
+        )
+
+    table_root.mkdir(parents=True, exist_ok=True)
+    tables = {
+        f"{run_id}_target_results.csv": (TARGET_FIELDS, target_rows),
+        f"{run_id}_instance_bounds.csv": (INSTANCE_FIELDS, instance_rows),
+        f"{run_id}_exact_optima.csv": (EXACT_FIELDS, exact_rows),
+        f"{run_id}_baseline_gaps.csv": (GAP_FIELDS, gap_rows),
+    }
+    hashes: dict[str, str] = {}
+    for filename, (fields, rows) in tables.items():
+        path = table_root / filename
+        if path.exists():
+            raise FileExistsError(f"table destination exists: {path}")
+        content = _csv_bytes(fields, rows)
+        atomic_write_bytes(path, content)
+        hashes[filename] = hashlib.sha256(content).hexdigest()
+
+    return hashes

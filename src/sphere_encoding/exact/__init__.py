@@ -1,6 +1,9 @@
 """Exact unrestricted-codebook optimisation primitives."""
 
-from sphere_encoding.exact.artifacts import write_instance_artifacts
+from sphere_encoding.exact.artifacts import (
+    write_instance_artifacts,
+    write_stage4_tables,
+)
 from sphere_encoding.exact.model import (
     ExactFeasibilityModel,
     StructuralLowerBound,
@@ -74,4 +77,5 @@ __all__ = [
     "validate_exact_witness",
     "verify_frozen_input_identities",
     "write_instance_artifacts",
+    "write_stage4_tables",
 ]

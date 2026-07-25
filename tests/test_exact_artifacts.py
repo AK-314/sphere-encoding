@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import csv
 import hashlib
 import json
 from pathlib import Path
@@ -7,7 +8,10 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from sphere_encoding.exact.artifacts import write_instance_artifacts
+from sphere_encoding.exact.artifacts import (
+    write_instance_artifacts,
+    write_stage4_tables,
+)
 from sphere_encoding.exact.run import (
     InstanceClassification,
     InstanceExecution,
@@ -140,3 +144,79 @@ def test_existing_instance_destination_is_rejected(tmp_path: Path) -> None:
             tmp_path,
             instance_execution(feasible=False),
         )
+
+
+def test_stage4_tables_have_frozen_schemas_and_content(
+    tmp_path: Path,
+) -> None:
+    run_id = "stage4-test-run"
+    exact = instance_execution(feasible=True)
+    bounded = InstanceExecution(
+        **{
+            **instance_execution(feasible=False).__dict__,
+            "execution_order": 2,
+            "graph_id": "path",
+            "classification": InstanceClassification.BOUNDED,
+            "final_lower_bound": 1,
+            "final_upper_bound": 2,
+            "unknown_target_count": 1,
+        }
+    )
+
+    hashes = write_stage4_tables(
+        tmp_path,
+        run_id=run_id,
+        executions=(exact, bounded),
+    )
+
+    assert len(hashes) == 4
+    target_rows = list(
+        csv.DictReader(
+            (tmp_path / f"{run_id}_target_results.csv").open(
+                encoding="utf-8",
+                newline="",
+            )
+        )
+    )
+    instance_rows = list(
+        csv.DictReader(
+            (tmp_path / f"{run_id}_instance_bounds.csv").open(
+                encoding="utf-8",
+                newline="",
+            )
+        )
+    )
+    exact_rows = list(
+        csv.DictReader(
+            (tmp_path / f"{run_id}_exact_optima.csv").open(
+                encoding="utf-8",
+                newline="",
+            )
+        )
+    )
+    gap_rows = list(
+        csv.DictReader(
+            (tmp_path / f"{run_id}_baseline_gaps.csv").open(
+                encoding="utf-8",
+                newline="",
+            )
+        )
+    )
+
+    assert len(target_rows) == 2
+    assert [row["classification"] for row in instance_rows] == [
+        "exact",
+        "bounded",
+    ]
+    assert exact_rows == [
+        {
+            "execution_order": "1",
+            "graph_id": "triangle",
+            "code_length": "2",
+            "exact_l_star_free": "1",
+        }
+    ]
+    assert [row["baseline_gap_closed"] for row in gap_rows] == [
+        "1",
+        "0",
+    ]
