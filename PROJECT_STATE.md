@@ -403,7 +403,27 @@ budgets, execution order, formulation, source identities, status
 interpretation, and reproduction rules are recorded prospectively in
 `configs/stage4_exact.json`.
 
-No Stage 4 feasibility model has yet been implemented or solved. The next
-controlled step is implementation of exact-model primitives and targeted
-tests. Stage 5 has not started and remains prohibited until Stage 4 is
-complete and accepted.
+The Stage 4 implementation is complete through the following controlled
+commits:
+
+- exact feasibility models: `0545e73ee098c052230e0a7e333be39cd90c19f0`;
+- solver execution and independent witness validation:
+  `d06122c19a8df229d41a1473925eec5db52c791c`;
+- frozen target planning: `d187d600ccb449d48cf0b24e2070bf26406c99a7`;
+- target execution and classification:
+  `923df71f6d7e204fea247f3f0b3b5bd5917de230`;
+- evidence preservation, tables, packaging, manifests, installation and
+  reproduction safeguards: commits `358f2287caeb6dd5055da55eef72c259133b09c0`
+  through `2aebdcb45cf3d083fc94caf08451ee44e131430e`.
+
+The derived plan contains exactly 21 instances, 68 ordered targets and
+81,600 seconds of frozen maximum target budget. Its SHA-256 is
+`a31795f8057b66594a1127ee877f05b4b5c8ab4feed8737a413ce834ace6f200`.
+The 68 regenerated deterministic model hashes have aggregate SHA-256
+`2d0a08e15818bad33c084ec74a335c7a3459c49c4b8cd27135905b54f43a74d9`.
+All 224 ordinary tests, Ruff and whitespace checks pass.
+
+No definitive Stage 4 target has been solved and no Stage 4 scientific output
+exists. The next controlled step is the first definitive execution from the
+clean implementation commit. Stage 5 has not started and remains prohibited
+until Stage 4 is complete and accepted.

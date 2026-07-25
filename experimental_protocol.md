@@ -848,3 +848,20 @@ remain unresolved.
 
 This amendment governs all definitive Stage 4 targets. Stage 5 heuristic
 free-codebook search remains prohibited until Stage 4 is complete and accepted.
+
+### 19.6 Pre-execution implementation readiness
+
+Before the first definitive target was invoked, the complete implementation,
+artifact, installation and reproduction workflow passed 224 ordinary tests,
+Ruff and whitespace checks. The independently derived execution plan contains
+exactly 21 instances, 68 ordered targets and 81,600 seconds of maximum frozen
+target budget, with plan SHA-256
+`a31795f8057b66594a1127ee877f05b4b5c8ab4feed8737a413ce834ace6f200`.
+
+All 68 CP-SAT models were constructed without solving. Their individual
+serialisations matched their recorded SHA-256 values; together they contain
+336,918 variables, 288,600 constraints and 22,076,467 serialised bytes. The
+ordered set of 68 model hashes has aggregate SHA-256
+`2d0a08e15818bad33c084ec74a335c7a3459c49c4b8cd27135905b54f43a74d9`.
+This readiness audit generated no feasibility status, witness, bound or other
+Stage 4 scientific outcome.
