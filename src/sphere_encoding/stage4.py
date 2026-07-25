@@ -323,6 +323,14 @@ def execute_stage4_plan(
             and result.targets_attempted != result.targets_planned
         ):
             raise RuntimeError("non-exact instance omitted frozen targets")
+        if any(
+            target.has_feasible_witness
+            and target.global_diagnostics is None
+            for target in result.executions
+        ):
+            raise RuntimeError(
+                "feasible witness lacks frozen global diagnostics"
+            )
         results.append(result)
 
     if len(results) != plan.instance_count:

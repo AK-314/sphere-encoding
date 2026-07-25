@@ -60,6 +60,15 @@ def target_execution(*, feasible: bool) -> TargetExecution:
             if codebook is not None
             else None
         ),
+        global_diagnostics=(
+            {
+                "antipodal_pairs": {"antipodal_pair_count": 1},
+                "far_pairs": {"far_pair_count": 1},
+                "global": {"unordered_pair_count": 3},
+            }
+            if feasible
+            else None
+        ),
     )
 
 

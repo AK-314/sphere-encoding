@@ -9,7 +9,7 @@ from typing import Any
 
 import numpy as np
 
-from sphere_encoding.config import canonical_json_dumps
+from sphere_encoding.config import canonical_json_dumps, load_json_config
 from sphere_encoding.exact.artifacts import load_instance_artifacts
 from sphere_encoding.exact.model import build_exact_feasibility_model
 from sphere_encoding.exact.plan import Stage4Plan
@@ -61,6 +61,9 @@ def audit_stage4_package(
     if len(stage2) != 1:
         raise ValueError("plan must contain one Stage 2 identity")
     graph_root = repository_path / "results" / "raw" / stage2[0].run_id
+    stage3_config = load_json_config(
+        repository_path / "configs" / "stage3_baselines.json"
+    )
 
     model_count = 0
     witness_count = 0
@@ -77,6 +80,15 @@ def audit_stage4_package(
         edges = np.load(
             graph_root / instance.graph_id / "edges.npy",
             allow_pickle=False,
+        )
+        vertices = np.load(
+            graph_root / instance.graph_id / "vertices.npy",
+            allow_pickle=False,
+        )
+        graph_metadata = json.loads(
+            (
+                graph_root / instance.graph_id / "metadata.json"
+            ).read_text(encoding="utf-8")
         )
         for target, execution in zip(
             instance.targets,
@@ -106,6 +118,14 @@ def audit_stage4_package(
                 validation = validate_exact_witness(
                     execution.witness_codebook,
                     built,
+                    vertices=vertices,
+                    far_threshold=stage3_config["far_pairs"]["threshold"],
+                    antipodal_atol=stage3_config["antipodal_pairs"][
+                        "accepted_stage2_atol"
+                    ],
+                    expected_antipodal_count=graph_metadata["diagnostics"][
+                        "antipodal_pair_count"
+                    ],
                 )
                 if (
                     validation.codebook_sha256
@@ -114,6 +134,10 @@ def audit_stage4_package(
                     != execution.witness_l_max
                 ):
                     raise ValueError("stored witness validation differs")
+                if validation.global_diagnostics != (
+                    execution.global_diagnostics
+                ):
+                    raise ValueError("stored global diagnostics differ")
                 witness_count += 1
         results.append(stored)
 

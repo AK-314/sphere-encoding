@@ -87,6 +87,7 @@ def execution(
         witness_codebook_sha256=(
             "d" * 64 if witness_l_max is not None else None
         ),
+        global_diagnostics=None,
     )
 
 

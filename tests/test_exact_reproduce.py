@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 import numpy as np
@@ -31,6 +32,26 @@ def build_fixture(tmp_path: Path):
         graph_root / "edges.npy",
         np.array([[0, 1], [0, 2], [1, 2]], dtype=np.int64),
         allow_pickle=False,
+    )
+    np.save(
+        graph_root / "vertices.npy",
+        np.eye(3, dtype=np.float64),
+        allow_pickle=False,
+    )
+    (graph_root / "metadata.json").write_text(
+        json.dumps({"diagnostics": {"antipodal_pair_count": 0}}),
+        encoding="utf-8",
+    )
+    config_path = tmp_path / "configs" / "stage3_baselines.json"
+    config_path.parent.mkdir()
+    config_path.write_text(
+        json.dumps(
+            {
+                "antipodal_pairs": {"accepted_stage2_atol": 1e-12},
+                "far_pairs": {"threshold": 0.75},
+            }
+        ),
+        encoding="utf-8",
     )
     baseline = BaselineChoice(
         graph_id="triangle",

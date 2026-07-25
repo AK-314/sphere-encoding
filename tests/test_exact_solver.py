@@ -399,3 +399,44 @@ def test_single_worker_repeated_solve_is_reproducible() -> None:
         == second.validation.codebook_sha256
     )
     assert np.array_equal(first.codebook, second.codebook)
+
+
+def test_witness_validation_computes_frozen_global_diagnostics() -> None:
+    edges = np.array(
+        [[0, 1], [0, 3], [1, 2], [2, 3]],
+        dtype=np.int64,
+    )
+    built = build_exact_feasibility_model(
+        vertex_count=4,
+        edges=edges,
+        code_length=2,
+        target_r=1,
+    )
+    codes = np.array(
+        [[0, 0], [1, 0], [1, 1], [0, 1]],
+        dtype=np.uint8,
+    )
+    vertices = np.array(
+        [[1.0, 0.0], [0.0, 1.0], [-1.0, 0.0], [0.0, -1.0]],
+        dtype=np.float64,
+    )
+
+    validation = validate_exact_witness(
+        codes,
+        built,
+        vertices=vertices,
+        far_threshold=0.75,
+        antipodal_atol=1e-12,
+        expected_antipodal_count=2,
+    )
+
+    assert validation.global_diagnostics is not None
+    assert validation.global_diagnostics["global"][
+        "unordered_pair_count"
+    ] == 6
+    assert validation.global_diagnostics["far_pairs"][
+        "far_pair_count"
+    ] == 2
+    assert validation.global_diagnostics["antipodal_pairs"][
+        "antipodal_pair_count"
+    ] == 2

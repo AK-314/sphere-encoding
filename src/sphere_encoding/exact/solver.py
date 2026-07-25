@@ -7,11 +7,13 @@ import io
 from dataclasses import dataclass
 from enum import StrEnum
 from numbers import Real
+from typing import Any
 
 import numpy as np
 from ortools.sat.python import cp_model
 
 from sphere_encoding.exact.model import ExactFeasibilityModel
+from sphere_encoding.metrics.global_metrics import evaluate_exhaustive_global
 
 
 class ExactSolverStatus(StrEnum):
@@ -49,6 +51,7 @@ class WitnessValidation:
     maximum_edge_hamming_distance: int
     edge_hamming_histogram: tuple[int, ...]
     codebook_sha256: str
+    global_diagnostics: dict[str, Any] | None
 
 
 @dataclass(frozen=True)
@@ -187,6 +190,11 @@ def recompute_edge_hamming(
 def validate_exact_witness(
     codebook: np.ndarray,
     built: ExactFeasibilityModel,
+    *,
+    vertices: np.ndarray | None = None,
+    far_threshold: float | None = None,
+    antipodal_atol: float | None = None,
+    expected_antipodal_count: int | None = None,
 ) -> WitnessValidation:
     """Independently validate a feasible assignment from CP-SAT."""
 
@@ -240,6 +248,27 @@ def validate_exact_witness(
     immutable = binary.copy()
     immutable.setflags(write=False)
 
+    diagnostic_values = (
+        vertices,
+        far_threshold,
+        antipodal_atol,
+        expected_antipodal_count,
+    )
+    supplied_count = sum(value is not None for value in diagnostic_values)
+    if supplied_count not in {0, 4}:
+        raise ValueError(
+            "global diagnostic inputs must be supplied together"
+        )
+    global_diagnostics = None
+    if supplied_count == 4:
+        global_diagnostics = evaluate_exhaustive_global(
+            vertices,
+            immutable,
+            far_threshold=float(far_threshold),
+            antipodal_atol=float(antipodal_atol),
+            expected_antipodal_count=int(expected_antipodal_count),
+        )
+
     return WitnessValidation(
         vertex_count=built.vertex_count,
         edge_count=len(built.edges),
@@ -251,6 +280,7 @@ def validate_exact_witness(
             int(value) for value in histogram.tolist()
         ),
         codebook_sha256=_codebook_npy_sha256(immutable),
+        global_diagnostics=global_diagnostics,
     )
 
 
@@ -313,6 +343,10 @@ def solve_exact_feasibility_model(
     random_seed: int = 0,
     cp_model_presolve: bool = True,
     log_search_progress: bool = True,
+    vertices: np.ndarray | None = None,
+    far_threshold: float | None = None,
+    antipodal_atol: float | None = None,
+    expected_antipodal_count: int | None = None,
 ) -> ExactSolveResult:
     """Solve one frozen threshold model and validate any witness."""
 
@@ -349,7 +383,14 @@ def solve_exact_feasibility_model(
 
     if interpretation.has_feasible_witness:
         codebook = _extract_codebook(solver, built)
-        validation = validate_exact_witness(codebook, built)
+        validation = validate_exact_witness(
+            codebook,
+            built,
+            vertices=vertices,
+            far_threshold=far_threshold,
+            antipodal_atol=antipodal_atol,
+            expected_antipodal_count=expected_antipodal_count,
+        )
 
     return ExactSolveResult(
         status=interpretation.status,

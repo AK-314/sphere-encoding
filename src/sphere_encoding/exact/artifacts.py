@@ -89,7 +89,7 @@ def _target_payload(execution: TargetExecution) -> dict[str, Any]:
             "maximum_edge_hamming_distance": execution.witness_l_max,
         }
 
-    return {
+    payload = {
         "budget_seconds": execution.budget_seconds,
         "certifies_infeasibility": execution.certifies_infeasibility,
         "constraint_count": execution.constraint_count,
@@ -109,6 +109,9 @@ def _target_payload(execution: TargetExecution) -> dict[str, Any]:
         "validation": validation,
         "variable_count": execution.variable_count,
     }
+    if validation is not None:
+        validation["global_diagnostics"] = execution.global_diagnostics
+    return payload
 
 
 def _validate_preserved_evidence(execution: TargetExecution) -> None:
@@ -265,6 +268,11 @@ def load_instance_artifacts(
             ),
             witness_codebook_sha256=(
                 str(validation["codebook_sha256"])
+                if validation is not None
+                else None
+            ),
+            global_diagnostics=(
+                validation["global_diagnostics"]
                 if validation is not None
                 else None
             ),

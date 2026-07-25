@@ -6,6 +6,7 @@ from collections.abc import Callable, Sequence
 from dataclasses import dataclass
 from enum import StrEnum
 from pathlib import Path
+from typing import Any
 
 import numpy as np
 
@@ -50,6 +51,7 @@ class TargetExecution:
     certifies_infeasibility: bool
     witness_l_max: int | None
     witness_codebook_sha256: str | None
+    global_diagnostics: dict[str, Any] | None
 
 
 @dataclass(frozen=True)
@@ -172,6 +174,33 @@ def execute_instance_plan(
     if edges.shape != (instance.edge_count, 2):
         raise ValueError("graph edges differ from frozen instance plan")
 
+    vertices_path = graph_root / "vertices.npy"
+    metadata_path = graph_root / "metadata.json"
+    stage3_config_path = repository_root / "configs" / "stage3_baselines.json"
+    diagnostic_kwargs: dict[str, Any] = {}
+    if (
+        vertices_path.is_file()
+        and metadata_path.is_file()
+        and stage3_config_path.is_file()
+    ):
+        import json
+
+        from sphere_encoding.config import load_json_config
+
+        vertices = np.load(vertices_path, allow_pickle=False)
+        metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+        stage3_config = load_json_config(stage3_config_path)
+        diagnostic_kwargs = {
+            "antipodal_atol": stage3_config["antipodal_pairs"][
+                "accepted_stage2_atol"
+            ],
+            "expected_antipodal_count": metadata["diagnostics"][
+                "antipodal_pair_count"
+            ],
+            "far_threshold": stage3_config["far_pairs"]["threshold"],
+            "vertices": vertices,
+        }
+
     executions: list[TargetExecution] = []
     for target in instance.targets:
         built = build_exact_feasibility_model(
@@ -188,6 +217,7 @@ def execute_instance_plan(
             random_seed=0,
             cp_model_presolve=True,
             log_search_progress=log_search_progress,
+            **diagnostic_kwargs,
         )
 
         validation = result.validation
@@ -218,6 +248,11 @@ def execute_instance_plan(
             ),
             witness_codebook_sha256=(
                 validation.codebook_sha256
+                if validation is not None
+                else None
+            ),
+            global_diagnostics=(
+                validation.global_diagnostics
                 if validation is not None
                 else None
             ),
