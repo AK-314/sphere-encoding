@@ -793,3 +793,58 @@ solver-generated assignments.
 Stage 3 may report definitive descriptive baseline measurements. It may
 not claim optimality, prove a lower bound, infer generalisation beyond the
 frozen graphs, or begin Stage 4.
+
+## 19. Stage 4 exact-solver prospective amendment
+
+### 19.1 Original pending decisions
+
+Section 17 left the exact solver and version, exact-solver time budget, and
+largest exact instance unresolved before Stage 4 definitive solving.
+
+### 19.2 Prospective resolution
+
+Before any Stage 4 solver outcome was generated or inspected, these decisions
+were frozen as follows:
+
+- solver: Google OR-Tools CP-SAT `9.15.6755`;
+- dependency constraint: `ortools>=9.15,<9.16`, resolved in `uv.lock`;
+- definitive settings: one search worker, random seed zero, search logging
+  enabled, and CP-SAT presolve enabled;
+- exact-core graphs: `icosphere_l0`, `icosphere_l1`, and the three
+  `primitive_q2_*` graphs at the code lengths listed in
+  `configs/stage4_exact.json`;
+- frontier graphs: `icosphere_l2` and the three `primitive_q3_*` direct
+  comparisons at the frozen code lengths;
+- total suite: exactly 21 graph-bit instances;
+- per-instance budgets: 5 minutes for `icosphere_l0`, 20 minutes for
+  `icosphere_l1`, 90 minutes for `icosphere_l2`, 60 minutes for each
+  `primitive_q2_*` instance, and 180 minutes for each `primitive_q3_*`
+  instance;
+- candidate targets are allocated equal shares of each instance budget before
+  its first solve and are attempted in ascending local-bound order;
+- unused time is not transferred between instances.
+
+The complete formulation, source identities, instance order, baseline rules,
+symmetry breaking, classifications, outputs, and reproduction requirements are
+frozen in `configs/stage4_exact.json`.
+
+### 19.3 Basis and inspected evidence
+
+The resolution used the accepted Stage 2 graph sizes and hashes, accepted
+Stage 3 baseline upper bounds, elementary structural lower bounds, anticipated
+CP-SAT scaling, deterministic single-worker reproducibility, and the available
+compute budget. No Stage 4 feasibility, infeasibility, timeout, witness, or
+scientific result had been generated or inspected.
+
+### 19.4 Interpretation correction check
+
+No authoritative file contained the stronger claim that Cartesian Gray is
+asymptotically unbounded. The permitted interpretation remains: across tested
+primitive resolutions \(q=2,3,4\), Cartesian Gray worst-case local sensitivity
+increased from 3 to 5 to 8, while asymptotic boundedness and the growth rate
+remain unresolved.
+
+### 19.5 Affected runs and boundary
+
+This amendment governs all definitive Stage 4 targets. Stage 5 heuristic
+free-codebook search remains prohibited until Stage 4 is complete and accepted.

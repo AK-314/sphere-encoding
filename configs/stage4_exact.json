@@ -1,0 +1,350 @@
+{
+  "baseline_upper_bounds": {
+    "cartesian_rule": "Cartesian baselines are eligible only at their exact native length",
+    "hint_only": true,
+    "hint_tie_break": "lowest L_max, then shortest native code length, then encoding_id in lexicographic order",
+    "same_length_rule": "a native code is eligible at exactly its own code length",
+    "selection": "minimum valid L_max among eligible Stage 3 encodings",
+    "shorter_problem_rule": "a longer Stage 3 code is never an upper bound for a shorter problem",
+    "source": "accepted Stage 3 deterministic baselines",
+    "zero_padding_rule": "non-Cartesian native codes may be extended to longer lengths with constant zero bits without changing L_max"
+  },
+  "boundary": {
+    "heuristic_free_codebook_search_permitted": false,
+    "stage5_started": false,
+    "stop_after": "Stage 4 completion report"
+  },
+  "budget_allocation": {
+    "allocation_frozen_before_first_target": true,
+    "early_stop_conditions": [
+      "exact optimum established",
+      "frozen target list exhausted"
+    ],
+    "rule": "for each graph-bit instance, list r from structural LB through baseline UB minus one, divide total instance budget equally before solving, and test r in ascending order",
+    "unused_time_transfer_permitted": false
+  },
+  "classification": {
+    "bounded": "final lower bound is below final upper bound and at least one candidate remains UNKNOWN",
+    "exact": "feasible U exists and every r below U from the structural lower bound is solver-certified infeasible",
+    "failure": [
+      "MODEL_INVALID",
+      "corrupted output",
+      "failed independent verification",
+      "missing required target execution",
+      "violated frozen budget",
+      "violated frozen suite"
+    ],
+    "upper_bound_only": "no solver-certified improvement to the structural lower bound but a valid baseline or witness supplies an upper bound"
+  },
+  "frozen_at_starting_head": "3c5b8d8332326b65da6acaee666df7730cd916bd",
+  "input": {
+    "regeneration_permitted": false,
+    "stage2": {
+      "archive_sha256": "30ff508a8b87c22808d6448fd7147017d6f65d8b52bb22b77b6b5304f8610a71",
+      "configuration_sha256": "b0acb6e8683a7d10cff99891c7346043de0ee7b3a0087cf71545d5df299eef01",
+      "package_tree_sha256": "24208510f0cc946ac3f5fc1108367234654ab95af685c2ffc41f1b39d3562ea7",
+      "run_id": "stage2-canonical-graphs-b0acb6e8683a-f2baeb7dbb50"
+    },
+    "stage3": {
+      "archive_sha256": "99bd4e5aad51e9e2b4942f029bc74ee24fbf5db16f1701026d9cbf8072b920ed",
+      "configuration_sha256": "3fad68b97de95f82cbf65d31c9dc10d039efd375a9cf0f29f1a79396dbf77896",
+      "package_tree_sha256": "ffb5fda1bbcabbb5007236a65313ad038caf437f1efc9d8a08d0ffa1ce631c7b",
+      "run_id": "stage3-deterministic-baselines-3fad68b97de9-f07ae893574e",
+      "table_set_sha256": "76bd455cd8bd87ed7ef2f740c3f9ad6dfdbd81b48828e08921708f46b3e204dd"
+    }
+  },
+  "interpretation": {
+    "cartesian_gray_tested_result": "Across tested primitive resolutions q=2,3,4, Cartesian Gray worst-case local sensitivity increased from 3 to 5 to 8.",
+    "formal_proof_certificate_claim_permitted": false,
+    "unresolved_claim": "The asymptotic boundedness or growth rate remains unresolved."
+  },
+  "model": {
+    "bit_variables": "b[v,j] in {0,1}",
+    "deterministic_protobuf_serialisation_required": true,
+    "edge_bound": "sum_j x[u,v,j] <= r for every graph edge",
+    "edge_xor_variables": "x[u,v,j] exactly equivalent to abs(b[u,j] - b[v,j])",
+    "global_distance_objective": false,
+    "injectivity": "AllDifferent(c[v] for v in V)",
+    "integer_code_domain": "0 <= c[v] < 2**m",
+    "integer_codes": "c[v] = sum(2**j * b[v,j])",
+    "model_sha256_required": true,
+    "model_validation_required": true,
+    "problem_type": "pure_feasibility",
+    "variable_and_constraint_counts_required": true
+  },
+  "outputs": {
+    "archive_directory": "results/archives",
+    "baseline_gap_table_suffix": "_baseline_gaps.csv",
+    "exact_table_suffix": "_exact_optima.csv",
+    "instance_table_suffix": "_instance_bounds.csv",
+    "manifest_directory": "manifests",
+    "raw_directory": "results/raw",
+    "run_id_prefix": "stage4-exact-free-codebook",
+    "table_directory": "results/tables",
+    "target_table_suffix": "_target_results.csv"
+  },
+  "reproduction": {
+    "detached_worktree_required": true,
+    "different_valid_feasible_witness_permitted": true,
+    "exact_locked_solver_required": true,
+    "feasible_assignment_independent_verification_required": true,
+    "model_hash_reproduction_required": true,
+    "runtime_bearing_fields": [
+      "wall_time_seconds",
+      "solver_log_timing",
+      "conflicts",
+      "branches",
+      "propagations",
+      "repository_root",
+      "timestamps"
+    ],
+    "single_worker_required": true,
+    "status_disagreement_is_failure_for": [
+      "INFEASIBLE",
+      "exact_classification"
+    ]
+  },
+  "schema_version": 1,
+  "scientific_purpose": {
+    "definition": "minimum, over injective binary codebooks of length m, of maximum graph-edge Hamming distance",
+    "excluded_objectives": [
+      "mean_local_hamming_distance",
+      "global_angular_hamming_distortion",
+      "bit_balance",
+      "circuit_complexity",
+      "neural_network_size"
+    ],
+    "optimised_metric": "worst_case_local_hamming_distance",
+    "quantity": "L_star_free(G,m)"
+  },
+  "solver": {
+    "accepted_statuses": [
+      "OPTIMAL",
+      "FEASIBLE",
+      "INFEASIBLE",
+      "MODEL_INVALID",
+      "UNKNOWN"
+    ],
+    "declared_constraint": ">=9.15,<9.16",
+    "definitive_parallel_search_permitted": false,
+    "distribution": "ortools",
+    "locked_version": "9.15.6755",
+    "name": "Google OR-Tools CP-SAT",
+    "parameters": {
+      "cp_model_presolve": true,
+      "log_search_progress": true,
+      "num_search_workers": 1,
+      "random_seed": 0
+    },
+    "status_interpretation": {
+      "FEASIBLE": "valid feasible upper-bound witness",
+      "INFEASIBLE": "solver-certified infeasibility at the exact model hash",
+      "MODEL_INVALID": "implementation failure",
+      "OPTIMAL": "valid feasible upper-bound witness",
+      "UNKNOWN": "neither feasibility nor infeasibility established"
+    }
+  },
+  "stage": 4,
+  "stage_name": "Exact Free-Codebook Optimisation",
+  "structural_lower_bounds": {
+    "distinctness": {
+      "condition": "graph contains at least one edge",
+      "lower_bound": 1
+    },
+    "odd_cycle": {
+      "condition": "graph is non-bipartite",
+      "deterministic_witness_required": true,
+      "lower_bound": 2
+    },
+    "stronger_bounds_permitted": false
+  },
+  "suite": {
+    "excluded_graphs": [
+      "icosphere_l3",
+      "primitive_q4_knn4",
+      "primitive_q4_knn6",
+      "primitive_q4_knn8"
+    ],
+    "instance_count": 21,
+    "instances": [
+      {
+        "code_length": 4,
+        "execution_order": 1,
+        "graph_id": "icosphere_l0",
+        "instance_class": "exact_core_primary",
+        "total_budget_seconds": 300
+      },
+      {
+        "code_length": 5,
+        "execution_order": 2,
+        "graph_id": "icosphere_l0",
+        "instance_class": "exact_core_primary",
+        "total_budget_seconds": 300
+      },
+      {
+        "code_length": 6,
+        "execution_order": 3,
+        "graph_id": "icosphere_l0",
+        "instance_class": "exact_core_primary",
+        "total_budget_seconds": 300
+      },
+      {
+        "code_length": 8,
+        "execution_order": 4,
+        "graph_id": "icosphere_l0",
+        "instance_class": "exact_core_primary",
+        "total_budget_seconds": 300
+      },
+      {
+        "code_length": 6,
+        "execution_order": 5,
+        "graph_id": "icosphere_l1",
+        "instance_class": "exact_core_primary",
+        "total_budget_seconds": 1200
+      },
+      {
+        "code_length": 7,
+        "execution_order": 6,
+        "graph_id": "icosphere_l1",
+        "instance_class": "exact_core_primary",
+        "total_budget_seconds": 1200
+      },
+      {
+        "code_length": 8,
+        "execution_order": 7,
+        "graph_id": "icosphere_l1",
+        "instance_class": "exact_core_primary",
+        "total_budget_seconds": 1200
+      },
+      {
+        "code_length": 10,
+        "execution_order": 8,
+        "graph_id": "icosphere_l1",
+        "instance_class": "exact_core_primary",
+        "total_budget_seconds": 1200
+      },
+      {
+        "code_length": 7,
+        "execution_order": 9,
+        "graph_id": "primitive_q2_knn4",
+        "instance_class": "exact_core_primitive_q2",
+        "total_budget_seconds": 3600
+      },
+      {
+        "code_length": 9,
+        "execution_order": 10,
+        "graph_id": "primitive_q2_knn4",
+        "instance_class": "exact_core_primitive_q2",
+        "total_budget_seconds": 3600
+      },
+      {
+        "code_length": 7,
+        "execution_order": 11,
+        "graph_id": "primitive_q2_knn6",
+        "instance_class": "exact_core_primitive_q2",
+        "total_budget_seconds": 3600
+      },
+      {
+        "code_length": 9,
+        "execution_order": 12,
+        "graph_id": "primitive_q2_knn6",
+        "instance_class": "exact_core_primitive_q2",
+        "total_budget_seconds": 3600
+      },
+      {
+        "code_length": 7,
+        "execution_order": 13,
+        "graph_id": "primitive_q2_knn8",
+        "instance_class": "exact_core_primitive_q2",
+        "total_budget_seconds": 3600
+      },
+      {
+        "code_length": 9,
+        "execution_order": 14,
+        "graph_id": "primitive_q2_knn8",
+        "instance_class": "exact_core_primitive_q2",
+        "total_budget_seconds": 3600
+      },
+      {
+        "code_length": 8,
+        "execution_order": 15,
+        "graph_id": "icosphere_l2",
+        "instance_class": "frontier_primary",
+        "total_budget_seconds": 5400
+      },
+      {
+        "code_length": 9,
+        "execution_order": 16,
+        "graph_id": "icosphere_l2",
+        "instance_class": "frontier_primary",
+        "total_budget_seconds": 5400
+      },
+      {
+        "code_length": 10,
+        "execution_order": 17,
+        "graph_id": "icosphere_l2",
+        "instance_class": "frontier_primary",
+        "total_budget_seconds": 5400
+      },
+      {
+        "code_length": 12,
+        "execution_order": 18,
+        "graph_id": "icosphere_l2",
+        "instance_class": "frontier_primary",
+        "total_budget_seconds": 5400
+      },
+      {
+        "code_length": 9,
+        "execution_order": 19,
+        "graph_id": "primitive_q3_knn4",
+        "instance_class": "frontier_direct_comparison",
+        "total_budget_seconds": 10800
+      },
+      {
+        "code_length": 9,
+        "execution_order": 20,
+        "graph_id": "primitive_q3_knn6",
+        "instance_class": "frontier_direct_comparison",
+        "total_budget_seconds": 10800
+      },
+      {
+        "code_length": 9,
+        "execution_order": 21,
+        "graph_id": "primitive_q3_knn8",
+        "instance_class": "frontier_direct_comparison",
+        "total_budget_seconds": 10800
+      }
+    ],
+    "post_outcome_suite_changes_permitted": false
+  },
+  "symmetry_breaking": {
+    "anchor_code": 0,
+    "anchor_vertex_index": 0,
+    "first_neighbour_allowed_codes": "2**w - 1 for every integer w in [1,r]",
+    "first_neighbour_rule": "smallest-index graph neighbour of vertex zero",
+    "prohibited": [
+      "fixing_multiple_neighbour_codes_without_proof",
+      "face_labelling_assumptions",
+      "geometric_coordinate ordering of arbitrary codewords",
+      "unproved bit-column signature ordering",
+      "mandatory Stage 3 code assignments"
+    ]
+  },
+  "verification": {
+    "independent_of_cp_sat": true,
+    "required_checks": [
+      "shape",
+      "binary_values",
+      "injectivity",
+      "exact_code_length",
+      "canonical_vertex_order",
+      "all_edge_hamming_distances",
+      "claimed_L_max",
+      "target_bound",
+      "local_histogram",
+      "Stage 3 global diagnostics",
+      "antipodal_diagnostics",
+      "far_pair_diagnostics"
+    ]
+  }
+}

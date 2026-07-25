@@ -364,6 +364,14 @@ feasible small instances.
 - largest exact instance frozen;
 - validated metric and graph infrastructure.
 
+### Frozen prospective design
+
+The Stage 4 solver choice, exact version, 21-instance suite, deterministic
+execution order, and fixed per-instance budgets are frozen in
+`configs/stage4_exact.json`. Definitive solving uses Google OR-Tools CP-SAT
+`9.15.6755` with one search worker. No Stage 4 solver outcome existed
+when this freeze was recorded.
+
 ### Expected implementation
 
 - formalise threshold-feasibility models for \(L_{\max}\);

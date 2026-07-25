@@ -392,12 +392,18 @@ No definitive graph output existed when this configuration was frozen.
 
 ## Active work and next boundary
 
-Active work is Stage 3 of 13: Metrics and Deterministic Baseline Encodings.
+Stage 3 is complete and accepted at commit
+`3c5b8d8332326b65da6acaee666df7730cd916bd`.
 
-The prospective freeze is the only Stage 3 work currently performed. The
-next controlled step is implementation of metric primitives and targeted
-tests.
+Active work is Stage 4 of 13: Exact Free-Codebook Optimisation.
 
-Stage 4 may not begin until Stage 3 implementation, definitive execution,
-independent reproduction, scientific-output commit and final acceptance
-are complete.
+The exact solver is frozen as Google OR-Tools CP-SAT `9.15.6755` under
+the locked constraint `ortools>=9.15,<9.16`. The fixed 21-instance suite,
+budgets, execution order, formulation, source identities, status
+interpretation, and reproduction rules are recorded prospectively in
+`configs/stage4_exact.json`.
+
+No Stage 4 feasibility model has yet been implemented or solved. The next
+controlled step is implementation of exact-model primitives and targeted
+tests. Stage 5 has not started and remains prohibited until Stage 4 is
+complete and accepted.
