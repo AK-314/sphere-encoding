@@ -2,14 +2,19 @@
 
 from __future__ import annotations
 
+import hashlib
+import importlib.metadata
 import shutil
 import tempfile
 from collections.abc import Callable, Mapping, Sequence
 from pathlib import Path
 from typing import Any
 
+import numpy as np
+
 from sphere_encoding.config import config_sha256, load_json_config
 from sphere_encoding.exact.artifacts import generate_stage4_artifacts
+from sphere_encoding.exact.model import build_exact_feasibility_model
 from sphere_encoding.exact.plan import Stage4Plan, derive_stage4_plan
 from sphere_encoding.exact.run import (
     InstanceClassification,
@@ -373,3 +378,93 @@ def install_definitive_stage4_artifacts(
         plan=plan,
         executions=executions,
     )
+
+
+def preflight_definitive_stage4(
+    *,
+    repository_path: str | Path,
+    config_path: str | Path,
+    require_clean: bool = True,
+) -> dict[str, Any]:
+    """Validate the complete definitive run without invoking a solver."""
+
+    repository = Path(repository_path).resolve()
+    resolved_config = Path(config_path)
+    if not resolved_config.is_absolute():
+        resolved_config = repository / resolved_config
+    configuration = load_json_config(resolved_config)
+    provenance = capture_repository(repository)
+    if require_clean and provenance["clean"] is not True:
+        raise ValueError("repository must be clean for Stage 4 preflight")
+    if configuration["boundary"]["stage5_started"] is not False:
+        raise ValueError("Stage 5 boundary is not intact")
+    installed_ortools = importlib.metadata.version("ortools")
+    if installed_ortools != configuration["solver"]["locked_version"]:
+        raise ValueError("installed OR-Tools differs from frozen version")
+
+    plan = derive_stage4_plan(repository, config_path=resolved_config)
+    stage2 = next(
+        identity
+        for identity in plan.input_identities
+        if identity.stage_name == "stage2"
+    )
+    hashes: list[str] = []
+    variable_count = 0
+    constraint_count = 0
+    model_byte_count = 0
+    for instance in plan.instances:
+        edges = np.load(
+            repository
+            / "results"
+            / "raw"
+            / stage2.run_id
+            / instance.graph_id
+            / "edges.npy",
+            allow_pickle=False,
+        )
+        for target in instance.targets:
+            built = build_exact_feasibility_model(
+                vertex_count=instance.vertex_count,
+                edges=edges,
+                code_length=instance.code_length,
+                target_r=target.target_r,
+                symmetry_breaking=True,
+            )
+            hashes.append(built.model_sha256)
+            variable_count += built.variable_count
+            constraint_count += built.constraint_count
+            model_byte_count += len(built.model_bytes)
+
+    if len(hashes) != plan.target_count:
+        raise RuntimeError("preflight model count differs from frozen plan")
+    model_set_hash = hashlib.sha256(
+        "\n".join(hashes).encode("utf-8")
+    ).hexdigest()
+    run_id = derive_stage4_run_id(
+        plan.configuration_sha256,
+        str(provenance["commit"]),
+    )
+    outputs = configuration["outputs"]
+    destinations = (
+        repository / outputs["raw_directory"] / run_id,
+        repository / outputs["archive_directory"] / f"{run_id}.tar.gz",
+        repository / outputs["manifest_directory"] / f"{run_id}.json",
+    )
+    if any(path.exists() for path in destinations):
+        raise FileExistsError("a definitive Stage 4 destination exists")
+
+    return {
+        "constraint_count": constraint_count,
+        "implementation_commit": provenance["commit"],
+        "instance_count": plan.instance_count,
+        "model_byte_count": model_byte_count,
+        "model_set_sha256": model_set_hash,
+        "ortools_version": installed_ortools,
+        "plan_sha256": plan.plan_sha256,
+        "repository_clean": provenance["clean"],
+        "run_id": run_id,
+        "stage5_started": False,
+        "target_count": len(hashes),
+        "total_budget_seconds": plan.total_budget_seconds,
+        "variable_count": variable_count,
+    }

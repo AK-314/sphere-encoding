@@ -24,6 +24,7 @@ from sphere_encoding.stage4 import (
     execute_stage4_plan,
     install_definitive_stage4_artifacts,
     install_prepared_stage4_artifacts,
+    preflight_definitive_stage4,
 )
 
 
@@ -357,3 +358,21 @@ def test_definitive_entry_point_executes_then_installs(
 
     assert installed["target_count_attempted"] == 0
     assert (repository / installed["manifest_path"]).is_file()
+
+
+def test_real_definitive_preflight_builds_all_models_without_solving() -> None:
+    result = preflight_definitive_stage4(
+        repository_path=Path.cwd(),
+        config_path="configs/stage4_exact.json",
+        require_clean=False,
+    )
+
+    assert result["instance_count"] == 21
+    assert result["target_count"] == 68
+    assert result["total_budget_seconds"] == 81600
+    assert result["variable_count"] == 336918
+    assert result["constraint_count"] == 288600
+    assert result["model_byte_count"] == 22076467
+    assert result["model_set_sha256"] == (
+        "2d0a08e15818bad33c084ec74a335c7a3459c49c4b8cd27135905b54f43a74d9"
+    )
