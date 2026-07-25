@@ -852,7 +852,7 @@ free-codebook search remains prohibited until Stage 4 is complete and accepted.
 ### 19.6 Pre-execution implementation readiness
 
 Before the first definitive target was invoked, the complete implementation,
-artifact, installation and reproduction workflow passed 224 ordinary tests,
+artifact, installation and reproduction workflow passed 225 ordinary tests,
 Ruff and whitespace checks. The independently derived execution plan contains
 exactly 21 instances, 68 ordered targets and 81,600 seconds of maximum frozen
 target budget, with plan SHA-256
