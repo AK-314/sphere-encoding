@@ -11,6 +11,7 @@ import pytest
 
 from sphere_encoding.exact.artifacts import (
     generate_stage4_artifacts,
+    load_instance_artifacts,
     write_instance_artifacts,
     write_stage4_tables,
 )
@@ -111,6 +112,20 @@ def test_instance_artifacts_preserve_complete_target_evidence(
     instance = json.loads((instance_root / "instance.json").read_text())
     assert instance["classification"] == "exact"
     assert instance["targets_attempted"] == 1
+
+    loaded = load_instance_artifacts(
+        tmp_path,
+        graph_id="triangle",
+        code_length=2,
+    )
+    assert loaded.classification is InstanceClassification.EXACT
+    assert loaded.executions[0].model_bytes == b"deterministic model"
+    assert loaded.executions[0].solver_log == "solver log\n"
+    if feasible:
+        assert np.array_equal(
+            loaded.executions[0].witness_codebook,
+            target_execution(feasible=True).witness_codebook,
+        )
 
 
 def test_corrupted_preserved_model_is_rejected_without_partial_output(

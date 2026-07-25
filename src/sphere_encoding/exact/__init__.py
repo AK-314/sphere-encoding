@@ -2,6 +2,7 @@
 
 from sphere_encoding.exact.artifacts import (
     generate_stage4_artifacts,
+    load_instance_artifacts,
     write_instance_artifacts,
     write_stage4_tables,
 )
@@ -26,6 +27,10 @@ from sphere_encoding.exact.plan import (
     select_baseline_row,
     stage4_plan_payload,
     verify_frozen_input_identities,
+)
+from sphere_encoding.exact.reproduce import (
+    audit_stage4_package,
+    reproduce_stage4_solver_results,
 )
 from sphere_encoding.exact.run import (
     InstanceClassification,
@@ -60,6 +65,7 @@ __all__ = [
     "TargetExecution",
     "TargetPlan",
     "WitnessValidation",
+    "audit_stage4_package",
     "build_exact_feasibility_model",
     "canonicalise_hint_codes",
     "classify_instance_executions",
@@ -69,9 +75,11 @@ __all__ = [
     "execute_instance_plan",
     "generate_stage4_artifacts",
     "interpret_solver_status",
+    "load_instance_artifacts",
     "load_stage3_baseline_rows",
     "model_proto_bytes",
     "recompute_edge_hamming",
+    "reproduce_stage4_solver_results",
     "select_baseline_row",
     "solve_exact_feasibility_model",
     "stage4_plan_payload",

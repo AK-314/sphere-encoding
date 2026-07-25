@@ -5,14 +5,22 @@ from __future__ import annotations
 import csv
 import hashlib
 import io
+import json
 import shutil
 import tempfile
 from pathlib import Path
 from typing import Any
 
+import numpy as np
+
 from sphere_encoding.config import canonical_json_dumps, pretty_json_dumps
 from sphere_encoding.exact.plan import Stage4Plan
-from sphere_encoding.exact.run import InstanceExecution, TargetExecution
+from sphere_encoding.exact.run import (
+    InstanceClassification,
+    InstanceExecution,
+    TargetExecution,
+)
+from sphere_encoding.exact.solver import ExactSolverStatus
 from sphere_encoding.graphs.artifacts import (
     collect_file_hashes,
     npy_bytes,
@@ -190,6 +198,101 @@ def write_instance_artifacts(
         raise
 
     return collect_file_hashes(destination)
+
+
+def load_instance_artifacts(
+    output_root: Path,
+    *,
+    graph_id: str,
+    code_length: int,
+) -> InstanceExecution:
+    """Load and validate one preserved Stage 4 instance."""
+
+    instance_root = output_root / graph_id / f"m{code_length}"
+    instance_path = instance_root / "instance.json"
+    if not instance_path.is_file():
+        raise FileNotFoundError(f"missing instance metadata: {instance_path}")
+    instance_data = json.loads(instance_path.read_text(encoding="utf-8"))
+    target_root = instance_root / "targets"
+    executions: list[TargetExecution] = []
+    for target_path in sorted(
+        target_root.glob("r*"),
+        key=lambda path: int(path.name[1:]),
+    ):
+        target_data = json.loads(
+            (target_path / "target.json").read_text(encoding="utf-8")
+        )
+        runtime = target_data["runtime"]
+        validation = target_data["validation"]
+        codebook_path = target_path / "codebook.npy"
+        codebook = (
+            np.load(codebook_path, allow_pickle=False)
+            if codebook_path.is_file()
+            else None
+        )
+        target = TargetExecution(
+            target_order_within_instance=int(
+                target_data["target_order_within_instance"]
+            ),
+            target_r=int(target_data["target_r"]),
+            budget_seconds=int(target_data["budget_seconds"]),
+            status=ExactSolverStatus(target_data["raw_status"]),
+            model_sha256=str(target_data["model_sha256"]),
+            variable_count=int(target_data["variable_count"]),
+            constraint_count=int(target_data["constraint_count"]),
+            wall_time_seconds=float(runtime["wall_time_seconds"]),
+            user_time_seconds=float(runtime["user_time_seconds"]),
+            conflict_count=int(runtime["conflict_count"]),
+            branch_count=int(runtime["branch_count"]),
+            response_stats=(target_path / "response_stats.txt").read_text(
+                encoding="utf-8"
+            ),
+            solver_log=(target_path / "solver.log").read_text(
+                encoding="utf-8"
+            ),
+            model_bytes=(target_path / "model.pb").read_bytes(),
+            witness_codebook=codebook,
+            has_feasible_witness=bool(
+                target_data["has_feasible_witness"]
+            ),
+            certifies_infeasibility=bool(
+                target_data["certifies_infeasibility"]
+            ),
+            witness_l_max=(
+                int(validation["maximum_edge_hamming_distance"])
+                if validation is not None
+                else None
+            ),
+            witness_codebook_sha256=(
+                str(validation["codebook_sha256"])
+                if validation is not None
+                else None
+            ),
+        )
+        _validate_preserved_evidence(target)
+        executions.append(target)
+
+    result = InstanceExecution(
+        execution_order=int(instance_data["execution_order"]),
+        graph_id=str(instance_data["graph_id"]),
+        code_length=int(instance_data["code_length"]),
+        structural_lower_bound=int(instance_data["structural_lower_bound"]),
+        baseline_upper_bound=int(instance_data["baseline_upper_bound"]),
+        final_lower_bound=int(instance_data["final_lower_bound"]),
+        final_upper_bound=int(instance_data["final_upper_bound"]),
+        classification=InstanceClassification(
+            instance_data["classification"]
+        ),
+        targets_planned=int(instance_data["targets_planned"]),
+        targets_attempted=int(instance_data["targets_attempted"]),
+        unknown_target_count=int(instance_data["unknown_target_count"]),
+        executions=tuple(executions),
+    )
+    if result.graph_id != graph_id or result.code_length != code_length:
+        raise ValueError("loaded instance identity differs from path")
+    if result.targets_attempted != len(result.executions):
+        raise ValueError("loaded target count differs from instance metadata")
+    return result
 
 
 def _csv_bytes(
