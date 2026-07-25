@@ -1,0 +1,113 @@
+{
+  "antipodal_pairs": {
+    "antipodal_pair_count": 145,
+    "maximum_raw_hamming_distance": 6,
+    "mean_normalised_hamming_distance": 0.5011494252873563,
+    "mean_raw_hamming_distance": 4.510344827586207,
+    "minimum_normalised_hamming_distance": 0.2222222222222222,
+    "minimum_raw_hamming_distance": 2
+  },
+  "array_files": {
+    "codes.npy": "8ea08a40464fef8e5a5c1610502fe68d14d6822a217810066738b385e656630f",
+    "local_edge_hamming.npy": "3adf049bfe281b6e2b6afcd740d7ac9b0e049589b94617f99a8d5ebce1de7a97"
+  },
+  "bit_balance": {
+    "constant_bit_count": 0,
+    "maximum_absolute_deviation_from_half": 0.11379310344827587,
+    "mean_absolute_deviation_from_half": 0.08390804597701149,
+    "per_bit_fraction_of_ones": [
+      0.44482758620689655,
+      0.41724137931034483,
+      0.38620689655172413,
+      0.44482758620689655,
+      0.41724137931034483,
+      0.38620689655172413,
+      0.44482758620689655,
+      0.41724137931034483,
+      0.38620689655172413
+    ]
+  },
+  "bit_redundancy": {
+    "complementary_bit_column_pair_count": 0,
+    "duplicate_bit_column_pair_count": 0,
+    "maximum_absolute_pearson_correlation": 0.21158077036630726
+  },
+  "code_length": {
+    "excess_bits": 0,
+    "m": 9,
+    "m0": 9
+  },
+  "collision_diagnostics": {
+    "collision_count": 0,
+    "largest_collision_class_size": 1,
+    "multi_member_collision_class_count": 0,
+    "unique_codeword_count": 290
+  },
+  "config_sha256": "3fad68b97de95f82cbf65d31c9dc10d039efd375a9cf0f29f1a79396dbf77896",
+  "encoding_definition": {
+    "authoritative_input": "Stage 2 integer_vectors.npy",
+    "code_length": "3_times_ceil_log2_2q_plus_1",
+    "coordinate_order": [
+      "x",
+      "y",
+      "z"
+    ],
+    "coordinate_transform": "shift c to c+q",
+    "encoding_id": "cartesian_coordinate_binary",
+    "requantise_floating_vertices": false
+  },
+  "encoding_id": "cartesian_coordinate_binary",
+  "far_pairs": {
+    "far_pair_count": 6349,
+    "mean_normalised_hamming_distance": 0.6047146532262299,
+    "mean_raw_hamming_distance": 5.442431879036069,
+    "minimum_normalised_hamming_distance": 0.2222222222222222,
+    "minimum_raw_hamming_distance": 2
+  },
+  "global": {
+    "maximum_absolute_distortion": 0.7777777777777778,
+    "mean_absolute_distortion": 0.1661429845318948,
+    "mean_normalised_angular_distance": 0.5017301037998348,
+    "mean_normalised_hamming_distance": 0.48644950880960897,
+    "root_mean_squared_distortion": 0.20710935237702868,
+    "spearman_angular_hamming_correlation": 0.4336421880715489,
+    "unordered_pair_count": 41905
+  },
+  "graph": {
+    "edge_count": 1104,
+    "family": "primitive_integer_directions",
+    "graph_id": "primitive_q3_knn6",
+    "vertex_count": 290
+  },
+  "local": {
+    "L_95": 5,
+    "L_99": 7,
+    "L_max": 7,
+    "L_max_edge_count": 12,
+    "L_mean": 2.7717391304347827,
+    "L_minimum": 1,
+    "L_standard_deviation": 1.3839394061060466,
+    "edge_count": 1104,
+    "histogram": [
+      0,
+      228,
+      294,
+      264,
+      180,
+      108,
+      18,
+      12,
+      0,
+      0
+    ]
+  },
+  "schema_version": 1,
+  "stage": 3,
+  "stage2_run_id": "stage2-canonical-graphs-b0acb6e8683a-f2baeb7dbb50",
+  "stage_name": "Metrics and Deterministic Baseline Encodings",
+  "validity": {
+    "binary": true,
+    "canonical_vertex_row_order": true,
+    "injective": true
+  }
+}

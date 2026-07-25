@@ -1,0 +1,98 @@
+{
+  "antipodal_pairs": {
+    "antipodal_pair_count": 6,
+    "maximum_raw_hamming_distance": 2,
+    "mean_normalised_hamming_distance": 0.5,
+    "mean_raw_hamming_distance": 2.0,
+    "minimum_normalised_hamming_distance": 0.5,
+    "minimum_raw_hamming_distance": 2
+  },
+  "array_files": {
+    "codes.npy": "459a06a67a6c818a294d223be3f8510e19812b3e6a797726af350d5f870f7a22",
+    "local_edge_hamming.npy": "2235e6b16ea957d8e11bf2afd328e404c35fc5927830c26a1c079e80f9842d59"
+  },
+  "bit_balance": {
+    "constant_bit_count": 0,
+    "maximum_absolute_deviation_from_half": 0.16666666666666669,
+    "mean_absolute_deviation_from_half": 0.08333333333333334,
+    "per_bit_fraction_of_ones": [
+      0.3333333333333333,
+      0.3333333333333333,
+      0.5,
+      0.5
+    ]
+  },
+  "bit_redundancy": {
+    "complementary_bit_column_pair_count": 0,
+    "duplicate_bit_column_pair_count": 0,
+    "maximum_absolute_pearson_correlation": 0.5000000000000001
+  },
+  "code_length": {
+    "excess_bits": 0,
+    "m": 4,
+    "m0": 4
+  },
+  "collision_diagnostics": {
+    "collision_count": 0,
+    "largest_collision_class_size": 1,
+    "multi_member_collision_class_count": 0,
+    "unique_codeword_count": 12
+  },
+  "config_sha256": "3fad68b97de95f82cbf65d31c9dc10d039efd375a9cf0f29f1a79396dbf77896",
+  "encoding_definition": {
+    "code_length": "ceil_log2_vertex_count",
+    "definition": "fixed-width standard binary of canonical row index i",
+    "encoding_id": "canonical_index_binary",
+    "geometry_aware": false,
+    "index_domain": "0_to_N_minus_1"
+  },
+  "encoding_id": "canonical_index_binary",
+  "far_pairs": {
+    "far_pair_count": 6,
+    "mean_normalised_hamming_distance": 0.5,
+    "mean_raw_hamming_distance": 2.0,
+    "minimum_normalised_hamming_distance": 0.5,
+    "minimum_raw_hamming_distance": 2
+  },
+  "global": {
+    "maximum_absolute_distortion": 0.6475836176504333,
+    "mean_absolute_distortion": 0.2568435205001313,
+    "mean_normalised_angular_distance": 0.5454545454545454,
+    "mean_normalised_hamming_distance": 0.5151515151515151,
+    "root_mean_squared_distortion": 0.30293652330218374,
+    "spearman_angular_hamming_correlation": 0.0,
+    "unordered_pair_count": 66
+  },
+  "graph": {
+    "edge_count": 30,
+    "family": "icosphere_triangulation",
+    "graph_id": "icosphere_l0",
+    "vertex_count": 12
+  },
+  "local": {
+    "L_95": 4,
+    "L_99": 4,
+    "L_max": 4,
+    "L_max_edge_count": 2,
+    "L_mean": 2.066666666666667,
+    "L_minimum": 1,
+    "L_standard_deviation": 0.9285592184789413,
+    "edge_count": 30,
+    "histogram": [
+      0,
+      10,
+      10,
+      8,
+      2
+    ]
+  },
+  "schema_version": 1,
+  "stage": 3,
+  "stage2_run_id": "stage2-canonical-graphs-b0acb6e8683a-f2baeb7dbb50",
+  "stage_name": "Metrics and Deterministic Baseline Encodings",
+  "validity": {
+    "binary": true,
+    "canonical_vertex_row_order": true,
+    "injective": true
+  }
+}

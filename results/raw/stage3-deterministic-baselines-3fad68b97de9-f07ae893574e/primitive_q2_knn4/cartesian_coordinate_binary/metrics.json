@@ -1,0 +1,113 @@
+{
+  "antipodal_pairs": {
+    "antipodal_pair_count": 49,
+    "maximum_raw_hamming_distance": 3,
+    "mean_normalised_hamming_distance": 0.2789115646258503,
+    "mean_raw_hamming_distance": 2.510204081632653,
+    "minimum_normalised_hamming_distance": 0.1111111111111111,
+    "minimum_raw_hamming_distance": 1
+  },
+  "array_files": {
+    "codes.npy": "36bc21a6f54ee7125d80d883d06703dedfac34e09f0a6497e14044379e25a439",
+    "local_edge_hamming.npy": "7096b788999eb11d8142c8f8728198a1467d99e4ebbebf165f90c65141ae1165"
+  },
+  "bit_balance": {
+    "constant_bit_count": 0,
+    "maximum_absolute_deviation_from_half": 0.33673469387755106,
+    "mean_absolute_deviation_from_half": 0.14285714285714285,
+    "per_bit_fraction_of_ones": [
+      0.16326530612244897,
+      0.41836734693877553,
+      0.5102040816326531,
+      0.16326530612244897,
+      0.41836734693877553,
+      0.5102040816326531,
+      0.16326530612244897,
+      0.41836734693877553,
+      0.5102040816326531
+    ]
+  },
+  "bit_redundancy": {
+    "complementary_bit_column_pair_count": 0,
+    "duplicate_bit_column_pair_count": 0,
+    "maximum_absolute_pearson_correlation": 0.4508348173337162
+  },
+  "code_length": {
+    "excess_bits": 2,
+    "m": 9,
+    "m0": 7
+  },
+  "collision_diagnostics": {
+    "collision_count": 0,
+    "largest_collision_class_size": 1,
+    "multi_member_collision_class_count": 0,
+    "unique_codeword_count": 98
+  },
+  "config_sha256": "3fad68b97de95f82cbf65d31c9dc10d039efd375a9cf0f29f1a79396dbf77896",
+  "encoding_definition": {
+    "authoritative_input": "Stage 2 integer_vectors.npy",
+    "code_length": "3_times_ceil_log2_2q_plus_1",
+    "coordinate_order": [
+      "x",
+      "y",
+      "z"
+    ],
+    "coordinate_transform": "shift c to c+q",
+    "encoding_id": "cartesian_coordinate_binary",
+    "requantise_floating_vertices": false
+  },
+  "encoding_id": "cartesian_coordinate_binary",
+  "far_pairs": {
+    "far_pair_count": 745,
+    "mean_normalised_hamming_distance": 0.4621923937360179,
+    "mean_raw_hamming_distance": 4.159731543624161,
+    "minimum_normalised_hamming_distance": 0.1111111111111111,
+    "minimum_raw_hamming_distance": 1
+  },
+  "global": {
+    "maximum_absolute_distortion": 0.8888888888888888,
+    "mean_absolute_distortion": 0.21256045349245833,
+    "mean_normalised_angular_distance": 0.5051546391548147,
+    "mean_normalised_hamming_distance": 0.4242232975664493,
+    "root_mean_squared_distortion": 0.2616121027615012,
+    "spearman_angular_hamming_correlation": 0.19906156442898687,
+    "unordered_pair_count": 4753
+  },
+  "graph": {
+    "edge_count": 264,
+    "family": "primitive_integer_directions",
+    "graph_id": "primitive_q2_knn4",
+    "vertex_count": 98
+  },
+  "local": {
+    "L_95": 6,
+    "L_99": 8,
+    "L_max": 8,
+    "L_max_edge_count": 3,
+    "L_mean": 2.8181818181818183,
+    "L_minimum": 1,
+    "L_standard_deviation": 1.6134763044817135,
+    "edge_count": 264,
+    "histogram": [
+      0,
+      72,
+      48,
+      69,
+      33,
+      24,
+      12,
+      3,
+      3,
+      0
+    ]
+  },
+  "schema_version": 1,
+  "stage": 3,
+  "stage2_run_id": "stage2-canonical-graphs-b0acb6e8683a-f2baeb7dbb50",
+  "stage_name": "Metrics and Deterministic Baseline Encodings",
+  "validity": {
+    "binary": true,
+    "canonical_vertex_row_order": true,
+    "injective": true
+  }
+}

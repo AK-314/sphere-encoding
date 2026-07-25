@@ -1,0 +1,108 @@
+{
+  "antipodal_pairs": {
+    "antipodal_pair_count": 145,
+    "maximum_raw_hamming_distance": 5,
+    "mean_normalised_hamming_distance": 0.5157088122605363,
+    "mean_raw_hamming_distance": 4.641379310344828,
+    "minimum_normalised_hamming_distance": 0.1111111111111111,
+    "minimum_raw_hamming_distance": 1
+  },
+  "array_files": {
+    "codes.npy": "275bc3cdc353a4c32cc9c89cd045de5d81577d2cb438762fba8052252a7b44aa",
+    "local_edge_hamming.npy": "36069834d9834c846775a007e7013460fb181f505bcd2236a50b99ee5840615d"
+  },
+  "bit_balance": {
+    "constant_bit_count": 0,
+    "maximum_absolute_deviation_from_half": 0.38275862068965516,
+    "mean_absolute_deviation_from_half": 0.0628352490421456,
+    "per_bit_fraction_of_ones": [
+      0.11724137931034483,
+      0.5586206896551724,
+      0.4413793103448276,
+      0.4482758620689655,
+      0.503448275862069,
+      0.496551724137931,
+      0.496551724137931,
+      0.496551724137931,
+      0.5
+    ]
+  },
+  "bit_redundancy": {
+    "complementary_bit_column_pair_count": 0,
+    "duplicate_bit_column_pair_count": 0,
+    "maximum_absolute_pearson_correlation": 0.3239417719358503
+  },
+  "code_length": {
+    "excess_bits": 0,
+    "m": 9,
+    "m0": 9
+  },
+  "collision_diagnostics": {
+    "collision_count": 0,
+    "largest_collision_class_size": 1,
+    "multi_member_collision_class_count": 0,
+    "unique_codeword_count": 290
+  },
+  "config_sha256": "3fad68b97de95f82cbf65d31c9dc10d039efd375a9cf0f29f1a79396dbf77896",
+  "encoding_definition": {
+    "code_length": "ceil_log2_vertex_count",
+    "definition": "fixed-width reflected Gray value g(i)=i xor (i right_shift 1)",
+    "encoding_id": "canonical_index_gray",
+    "geometry_aware": false,
+    "index_domain": "0_to_N_minus_1"
+  },
+  "encoding_id": "canonical_index_gray",
+  "far_pairs": {
+    "far_pair_count": 6349,
+    "mean_normalised_hamming_distance": 0.4983286956826097,
+    "mean_raw_hamming_distance": 4.484958261143487,
+    "minimum_normalised_hamming_distance": 0.1111111111111111,
+    "minimum_raw_hamming_distance": 1
+  },
+  "global": {
+    "maximum_absolute_distortion": 0.8888888888888888,
+    "mean_absolute_distortion": 0.20114540126611705,
+    "mean_normalised_angular_distance": 0.5017301037998348,
+    "mean_normalised_hamming_distance": 0.4669212106749393,
+    "root_mean_squared_distortion": 0.24916895360253558,
+    "spearman_angular_hamming_correlation": 0.17286660041187524,
+    "unordered_pair_count": 41905
+  },
+  "graph": {
+    "edge_count": 1416,
+    "family": "primitive_integer_directions",
+    "graph_id": "primitive_q3_knn8",
+    "vertex_count": 290
+  },
+  "local": {
+    "L_95": 6,
+    "L_99": 6,
+    "L_max": 8,
+    "L_max_edge_count": 1,
+    "L_mean": 3.2104519774011298,
+    "L_minimum": 1,
+    "L_standard_deviation": 1.5096874818622463,
+    "edge_count": 1416,
+    "histogram": [
+      0,
+      234,
+      246,
+      342,
+      290,
+      205,
+      85,
+      13,
+      1,
+      0
+    ]
+  },
+  "schema_version": 1,
+  "stage": 3,
+  "stage2_run_id": "stage2-canonical-graphs-b0acb6e8683a-f2baeb7dbb50",
+  "stage_name": "Metrics and Deterministic Baseline Encodings",
+  "validity": {
+    "binary": true,
+    "canonical_vertex_row_order": true,
+    "injective": true
+  }
+}
