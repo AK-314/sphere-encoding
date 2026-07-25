@@ -9,6 +9,19 @@ from sphere_encoding.exact.model import (
     model_proto_bytes,
     structural_lower_bound,
 )
+from sphere_encoding.exact.plan import (
+    BaselineChoice,
+    FrozenInputIdentity,
+    InstancePlan,
+    Stage4Plan,
+    TargetPlan,
+    derive_stage4_plan,
+    equal_target_budget,
+    load_stage3_baseline_rows,
+    select_baseline_row,
+    stage4_plan_payload,
+    verify_frozen_input_identities,
+)
 from sphere_encoding.exact.solver import (
     ExactSolveResult,
     ExactSolverStatus,
@@ -21,19 +34,30 @@ from sphere_encoding.exact.solver import (
 )
 
 __all__ = [
+    "BaselineChoice",
     "ExactFeasibilityModel",
     "ExactSolveResult",
     "ExactSolverStatus",
+    "FrozenInputIdentity",
+    "InstancePlan",
+    "Stage4Plan",
     "StatusInterpretation",
     "StructuralLowerBound",
+    "TargetPlan",
     "WitnessValidation",
     "build_exact_feasibility_model",
     "canonicalise_hint_codes",
+    "derive_stage4_plan",
     "deterministic_odd_cycle",
+    "equal_target_budget",
     "interpret_solver_status",
+    "load_stage3_baseline_rows",
     "model_proto_bytes",
     "recompute_edge_hamming",
+    "select_baseline_row",
     "solve_exact_feasibility_model",
+    "stage4_plan_payload",
     "structural_lower_bound",
     "validate_exact_witness",
+    "verify_frozen_input_identities",
 ]
