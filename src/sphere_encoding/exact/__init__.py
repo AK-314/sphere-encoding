@@ -1,6 +1,7 @@
 """Exact unrestricted-codebook optimisation primitives."""
 
 from sphere_encoding.exact.artifacts import (
+    generate_stage4_artifacts,
     write_instance_artifacts,
     write_stage4_tables,
 )
@@ -66,6 +67,7 @@ __all__ = [
     "deterministic_odd_cycle",
     "equal_target_budget",
     "execute_instance_plan",
+    "generate_stage4_artifacts",
     "interpret_solver_status",
     "load_stage3_baseline_rows",
     "model_proto_bytes",

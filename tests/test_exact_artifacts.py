@@ -3,22 +3,25 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+import tarfile
 from pathlib import Path
 
 import numpy as np
 import pytest
 
 from sphere_encoding.exact.artifacts import (
+    generate_stage4_artifacts,
     write_instance_artifacts,
     write_stage4_tables,
 )
+from sphere_encoding.exact.plan import Stage4Plan
 from sphere_encoding.exact.run import (
     InstanceClassification,
     InstanceExecution,
     TargetExecution,
 )
 from sphere_encoding.exact.solver import ExactSolverStatus
-from sphere_encoding.graphs.artifacts import npy_bytes
+from sphere_encoding.graphs.artifacts import collect_file_hashes, npy_bytes
 
 
 def target_execution(*, feasible: bool) -> TargetExecution:
@@ -220,3 +223,72 @@ def test_stage4_tables_have_frozen_schemas_and_content(
         "1",
         "0",
     ]
+
+
+def synthetic_plan() -> Stage4Plan:
+    return Stage4Plan(
+        stage=4,
+        stage_name="Exact Free-Codebook Optimisation",
+        configuration_path="configs/stage4_exact.json",
+        configuration_sha256="a" * 64,
+        input_identities=(),
+        instances=(),
+        instance_count=1,
+        target_count=1,
+        total_budget_seconds=5,
+        hint_eligible_target_count=0,
+        baseline_tie_instance_count=0,
+        plan_sha256="b" * 64,
+    )
+
+
+def test_combined_stage4_artifacts_are_reproducible(
+    tmp_path: Path,
+) -> None:
+    execution = instance_execution(feasible=True)
+    plan = synthetic_plan()
+    plan = Stage4Plan(
+        **{
+            **plan.__dict__,
+            "instances": (
+                type("Planned", (), {
+                    "execution_order": execution.execution_order,
+                    "graph_id": execution.graph_id,
+                    "code_length": execution.code_length,
+                })(),
+            ),
+        }
+    )
+    results = []
+    for name in ("first", "second"):
+        root = tmp_path / name
+        result = generate_stage4_artifacts(
+            plan=plan,
+            executions=(execution,),
+            package_root=root / "raw" / "stage4-test-run",
+            table_root=root / "tables",
+            archive_path=root / "stage4-test-run.tar.gz",
+            run_id="stage4-test-run",
+        )
+        results.append((root, result))
+
+    assert results[0][1] == results[1][1]
+    assert collect_file_hashes(results[0][0] / "raw") == (
+        collect_file_hashes(results[1][0] / "raw")
+    )
+    assert results[0][1]["table_file_count"] == 4
+    assert results[0][1]["instance_count"] == 1
+    assert results[0][1]["target_count_attempted"] == 1
+    assert (
+        results[0][0] / "stage4-test-run.tar.gz"
+    ).read_bytes() == (
+        results[1][0] / "stage4-test-run.tar.gz"
+    ).read_bytes()
+
+    with tarfile.open(
+        results[0][0] / "stage4-test-run.tar.gz",
+        mode="r:gz",
+    ) as archive:
+        members = archive.getmembers()
+    assert len(members) == results[0][1]["archive_member_count"]
+    assert all(member.mtime == 0 for member in members)

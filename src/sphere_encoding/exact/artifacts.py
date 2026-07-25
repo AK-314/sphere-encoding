@@ -5,12 +5,20 @@ from __future__ import annotations
 import csv
 import hashlib
 import io
+import shutil
+import tempfile
 from pathlib import Path
 from typing import Any
 
-from sphere_encoding.config import pretty_json_dumps
+from sphere_encoding.config import canonical_json_dumps, pretty_json_dumps
+from sphere_encoding.exact.plan import Stage4Plan
 from sphere_encoding.exact.run import InstanceExecution, TargetExecution
-from sphere_encoding.graphs.artifacts import collect_file_hashes, npy_bytes
+from sphere_encoding.graphs.artifacts import (
+    collect_file_hashes,
+    npy_bytes,
+    write_deterministic_tar_gz,
+)
+from sphere_encoding.hashing import sha256_bytes, sha256_file
 from sphere_encoding.provenance import atomic_write_bytes, atomic_write_text
 
 TARGET_FIELDS = (
@@ -310,3 +318,135 @@ def write_stage4_tables(
         hashes[filename] = hashlib.sha256(content).hexdigest()
 
     return hashes
+
+
+def generate_stage4_artifacts(
+    *,
+    plan: Stage4Plan,
+    executions: tuple[InstanceExecution, ...],
+    package_root: Path,
+    table_root: Path,
+    archive_path: Path,
+    run_id: str,
+) -> dict[str, Any]:
+    """Build a complete Stage 4 package, table set, and archive."""
+
+    if package_root.exists():
+        raise FileExistsError(f"package destination exists: {package_root}")
+    if archive_path.exists():
+        raise FileExistsError(f"archive destination exists: {archive_path}")
+    if len(executions) != plan.instance_count:
+        raise ValueError("execution count differs from frozen plan")
+
+    expected_instances = tuple(
+        (item.execution_order, item.graph_id, item.code_length)
+        for item in plan.instances
+    )
+    actual_instances = tuple(
+        (item.execution_order, item.graph_id, item.code_length)
+        for item in executions
+    )
+    if actual_instances != expected_instances:
+        raise ValueError("executions differ from frozen instance order")
+    if any(
+        item.targets_attempted != item.targets_planned
+        and item.classification.value not in {"exact", "failure"}
+        for item in executions
+    ):
+        raise ValueError("incomplete non-terminal instance execution")
+
+    package_root.mkdir(parents=True)
+    try:
+        for execution in executions:
+            write_instance_artifacts(package_root, execution)
+
+        table_files = write_stage4_tables(
+            table_root,
+            run_id=run_id,
+            executions=executions,
+        )
+        deterministic_files = collect_file_hashes(package_root)
+        package_tree_hash = sha256_bytes(
+            canonical_json_dumps(deterministic_files).encode("utf-8")
+        )
+        table_set_hash = sha256_bytes(
+            canonical_json_dumps(table_files).encode("utf-8")
+        )
+        metadata = {
+            "baseline_tie_instance_count": (
+                plan.baseline_tie_instance_count
+            ),
+            "classification_counts": {
+                name: sum(
+                    execution.classification.value == name
+                    for execution in executions
+                )
+                for name in ("exact", "bounded", "upper_bound_only", "failure")
+            },
+            "configuration_sha256": plan.configuration_sha256,
+            "deterministic_file_count_without_package_metadata": len(
+                deterministic_files
+            ),
+            "deterministic_files": deterministic_files,
+            "instance_count": len(executions),
+            "package_tree_sha256": package_tree_hash,
+            "plan_sha256": plan.plan_sha256,
+            "run_id": run_id,
+            "schema_version": 1,
+            "stage": 4,
+            "stage_name": plan.stage_name,
+            "table_file_count": len(table_files),
+            "table_files": table_files,
+            "table_set_sha256": table_set_hash,
+            "target_count_attempted": sum(
+                execution.targets_attempted for execution in executions
+            ),
+            "target_count_planned": plan.target_count,
+            "total_budget_seconds": plan.total_budget_seconds,
+        }
+        atomic_write_text(
+            package_root / "package_metadata.json",
+            pretty_json_dumps(metadata),
+        )
+
+        with tempfile.TemporaryDirectory(
+            prefix=f"{run_id}-archive-"
+        ) as temporary_name:
+            archive_root = Path(temporary_name) / "contents"
+            raw_destination = archive_root / "raw" / run_id
+            tables_destination = archive_root / "tables"
+            shutil.copytree(package_root, raw_destination)
+            tables_destination.mkdir(parents=True)
+            for filename in sorted(table_files):
+                shutil.copyfile(
+                    table_root / filename,
+                    tables_destination / filename,
+                )
+            write_deterministic_tar_gz(archive_root, archive_path)
+
+        all_files = collect_file_hashes(package_root)
+        return {
+            "archive_member_count": len(all_files) + len(table_files),
+            "archive_sha256": sha256_file(archive_path),
+            "file_count": len(all_files),
+            "files": all_files,
+            "instance_count": len(executions),
+            "package_tree_sha256": package_tree_hash,
+            "table_file_count": len(table_files),
+            "table_files": table_files,
+            "table_set_sha256": table_set_hash,
+            "target_count_attempted": sum(
+                execution.targets_attempted for execution in executions
+            ),
+        }
+    except Exception:
+        shutil.rmtree(package_root, ignore_errors=True)
+        for filename in (
+            f"{run_id}_target_results.csv",
+            f"{run_id}_instance_bounds.csv",
+            f"{run_id}_exact_optima.csv",
+            f"{run_id}_baseline_gaps.csv",
+        ):
+            (table_root / filename).unlink(missing_ok=True)
+        archive_path.unlink(missing_ok=True)
+        raise
