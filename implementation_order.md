@@ -224,89 +224,130 @@ Stage 2 completion report.
 Do not implement definitive encoding metrics or baseline encoders beyond any
 minimal graph-test fixtures required for validation. Do not begin Stage 3.
 
-## 5. Stage 3: Metrics and baseline encodings
+## 5. Stage 3: Metrics and deterministic baseline encodings
 
 ### Purpose
 
-Implement the complete evaluation layer and deterministic baseline encoders
-before optimisation methods are introduced.
+Freeze and implement the complete deterministic evaluation layer, then
+evaluate only the four prespecified non-optimised baselines before any
+optimisation method is introduced.
 
 ### Dependencies
 
-- accepted Stage 2;
+- accepted Stage 2 run
+  `stage2-canonical-graphs-b0acb6e8683a-f2baeb7dbb50`;
+- verified Stage 2 configuration, package-tree and archive hashes;
 - canonical graph identifiers and saved arrays;
-- frozen local and global metric definitions.
+- prospectively frozen Stage 3 configuration and metric definitions.
+
+### Prospective freeze
+
+Before definitive results:
+
+- freeze hard-binary validity and injectivity;
+- freeze raw and normalised Hamming distance;
+- freeze clipped normalised angular distance;
+- freeze the complete local metric set;
+- freeze NumPy quantiles with `method="higher"`;
+- freeze population local standard deviation with `ddof=0`;
+- freeze exhaustive unordered-pair evaluation;
+- freeze deterministic average ranks and Spearman implementation;
+- freeze far pairs at normalised angular distance at least `0.75`;
+- reuse Stage 2 antipodal tolerance `1e-12`;
+- freeze collision, bit-balance and bit-redundancy diagnostics;
+- freeze applicability and deterministic serialisation.
 
 ### Expected implementation
 
-- implement binary-code validation;
-- implement injectivity and collision checks;
-- implement local Hamming-distance computation;
-- implement all mandatory local metrics;
-- freeze percentile implementation;
-- implement global angular-Hamming diagnostics;
-- freeze all-pairs or sampled-pair rules;
-- freeze far-pair and antipodal definitions;
+- implement reusable hard-binary encoding validation;
+- implement collision and injectivity diagnostics;
+- implement vectorised and reference Hamming calculations;
+- preserve canonical edge order;
+- implement all frozen local metrics and complete histograms;
+- implement clipped angular distance and exhaustive pair enumeration;
+- implement tied average ranks and deterministic Spearman correlation;
+- implement global distortion, far-pair and antipodal diagnostics;
 - implement bit-balance and redundancy diagnostics;
-- implement matched Cartesian binary baselines;
-- implement matched Cartesian Gray baselines;
-- implement prespecified random threshold baselines;
-- implement deterministic random-seed schedules;
-- create standard evaluation records and tables.
+- implement canonical-index binary;
+- implement canonical-index Gray;
+- implement Cartesian-coordinate binary from Stage 2 integer vectors;
+- implement Cartesian-coordinate Gray from Stage 2 integer vectors;
+- create the complete 52-row applicability matrix;
+- evaluate exactly 44 applicable graph-encoding instances;
+- create deterministic raw arrays, JSON metrics and CSV tables;
+- create the Stage 3 manifest and deterministic archive;
+- independently reproduce every deterministic output.
 
 ### Required tests
 
-- known Hamming-distance examples;
-- edge counting exactly once;
-- exact \(L_{\max}\) and edge-attainment count;
-- exact percentile fixtures;
-- full local-distribution counts;
-- collision detection;
-- malformed-code rejection;
-- angular-distance fixtures;
-- Spearman-correlation fixtures;
-- global-distortion fixtures;
-- far-pair and antipodal fixtures;
-- bit-balance fixtures;
-- redundancy fixtures;
-- binary and Gray-code unit examples;
-- matched bit-length checks;
-- deterministic threshold-code generation;
-- deterministic evaluation output.
+- valid and malformed code arrays;
+- collision detection and injectivity;
+- exact binary and reflected Gray examples;
+- fixed-width and insufficient-width handling;
+- Cartesian coordinate order, widths and range validation;
+- exact and vectorised Hamming examples;
+- canonical edge-order preservation;
+- complete local histograms;
+- exact `method="higher"` percentile fixtures;
+- angular clipping and exhaustive pair ordering;
+- tied average ranks and constant-variable handling;
+- exact Spearman reference examples;
+- exact global-distortion and far-threshold fixtures;
+- accepted antipodal pairing and count validation;
+- balanced, constant, duplicate and complementary bit fixtures;
+- defined constant-column treatment;
+- exactly 44 evaluated instances and 52 applicability rows;
+- deterministic JSON, CSV, NPY, manifest and archive output;
+- archive member parity and deterministic recreation;
+- independent reproduction.
 
 ### Scientific outputs
 
-- baseline metric tables for every frozen graph and code length;
-- local-distance distributions;
-- global-diagnostic tables;
-- bit-balance and redundancy tables;
-- baseline manifests.
+- one raw directory per applicable graph-encoding instance;
+- `codes.npy`;
+- `local_edge_hamming.npy`;
+- `metrics.json`;
+- baseline-summary table;
+- complete local-histogram table;
+- full applicability table;
+- Stage 3 manifest;
+- deterministic Stage 3 archive.
 
 ### Reproduction expectations
 
-All deterministic baselines must reproduce byte-for-byte.
-
-Random baselines must reproduce exactly from frozen seeds and must preserve all
-draws, not only selected draws.
+Every deterministic Stage 3 output must reproduce byte-for-byte from a
+clean detached worktree at the exact implementation commit. Runtime-bearing
+fields must be explicitly classified and compared semantically.
 
 ### Acceptance gate
 
 Stage 3 passes only when:
 
-- every metric is unit-tested against known fixtures;
-- every baseline is injectivity-checked;
-- invalid baselines are retained diagnostically but excluded from valid primary
-  comparisons;
-- random selection budgets are explicit;
-- all graphs and code lengths are evaluated according to frozen configuration;
-- outputs, manifests, hashes, tests, Ruff, and whitespace checks pass.
+- the metric and baseline definitions were committed before definitive
+  execution;
+- Stage 2 inputs match all accepted hashes;
+- all metric and encoder tests pass;
+- exactly 44 applicable instances exist;
+- all definitive encodings are injective;
+- all eight inapplicable combinations are recorded;
+- local histograms sum exactly to graph edge counts;
+- exhaustive pair counts equal `N(N-1)/2`;
+- antipodal counts equal accepted Stage 2 metadata;
+- all output hashes match the manifest;
+- archive member parity and deterministic regeneration pass;
+- independent detached-worktree reproduction passes;
+- full tests, Ruff and whitespace checks pass;
+- results are committed and the repository is clean;
+- Stage 4 has not started.
 
 ### Exact stopping boundary
 
-Stop after baseline evaluation and the Stage 3 completion report.
+Do not implement random codebooks, random or optimised hyperplanes,
+threshold encoders, exact solvers, heuristic codebook search, learned
+encoders or neural training.
 
-Do not implement an exact optimiser, heuristic free-codebook search, threshold
-optimisation, or neural training. Do not begin Stage 4.
+Stop after deterministic baseline evaluation and the Stage 3 completion
+report. Do not begin Stage 4.
 
 ## 6. Stage 4: Exact free-codebook optimisation
 

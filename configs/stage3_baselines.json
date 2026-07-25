@@ -1,0 +1,307 @@
+{
+  "antipodal_pairs": {
+    "accepted_stage2_atol": 1e-12,
+    "authoritative_source": "Stage 2 vertices plus configs/stage2_graph_suite.json antipodal_atol",
+    "enumeration_order": "lexicographic_i_then_j",
+    "metrics": [
+      "pair_count",
+      "minimum_raw_hamming",
+      "maximum_raw_hamming",
+      "mean_raw_hamming",
+      "minimum_normalised_hamming",
+      "mean_normalised_hamming"
+    ],
+    "pair_rule": "unordered i<j pairs satisfying norm(vertices[i]+vertices[j]) <= accepted_stage2_atol",
+    "validation": [
+      "pair_count_equals_stage2_metadata_antipodal_pair_count",
+      "pair_count_equals_N_divided_by_2",
+      "every_vertex_occurs_in_exactly_one_antipodal_pair"
+    ]
+  },
+  "applicability": {
+    "applicable_instance_count": 44,
+    "full_matrix_row_count": 52,
+    "graph_ids": [
+      "icosphere_l0",
+      "icosphere_l1",
+      "icosphere_l2",
+      "icosphere_l3",
+      "primitive_q2_knn4",
+      "primitive_q2_knn6",
+      "primitive_q2_knn8",
+      "primitive_q3_knn4",
+      "primitive_q3_knn6",
+      "primitive_q3_knn8",
+      "primitive_q4_knn4",
+      "primitive_q4_knn6",
+      "primitive_q4_knn8"
+    ],
+    "inapplicable_instance_count": 8,
+    "rules": {
+      "canonical_index_binary": {
+        "applicable_families": [
+          "icosphere_triangulation",
+          "primitive_integer_directions"
+        ],
+        "expected_instance_count": 13
+      },
+      "canonical_index_gray": {
+        "applicable_families": [
+          "icosphere_triangulation",
+          "primitive_integer_directions"
+        ],
+        "expected_instance_count": 13
+      },
+      "cartesian_coordinate_binary": {
+        "applicable_families": [
+          "primitive_integer_directions"
+        ],
+        "expected_instance_count": 9,
+        "inapplicable_reason": "authoritative integer coordinates are unavailable for icosphere graphs"
+      },
+      "cartesian_coordinate_gray": {
+        "applicable_families": [
+          "primitive_integer_directions"
+        ],
+        "expected_instance_count": 9,
+        "inapplicable_reason": "authoritative integer coordinates are unavailable for icosphere graphs"
+      }
+    }
+  },
+  "archive": {
+    "format": "tar.gz",
+    "gzip_mtime": 0,
+    "member_gid": 0,
+    "member_gname": "",
+    "member_mode": "0644",
+    "member_mtime": 0,
+    "member_order": "lexicographic_relative_path",
+    "member_uid": 0,
+    "member_uname": ""
+  },
+  "baseline_encodings": {
+    "bit_order_within_fixed_width_integer": "most_significant_to_least_significant",
+    "canonical_index_binary": {
+      "code_length": "ceil_log2_vertex_count",
+      "definition": "fixed-width standard binary of canonical row index i",
+      "encoding_id": "canonical_index_binary",
+      "geometry_aware": false,
+      "index_domain": "0_to_N_minus_1"
+    },
+    "canonical_index_gray": {
+      "code_length": "ceil_log2_vertex_count",
+      "definition": "fixed-width reflected Gray value g(i)=i xor (i right_shift 1)",
+      "encoding_id": "canonical_index_gray",
+      "geometry_aware": false,
+      "index_domain": "0_to_N_minus_1"
+    },
+    "cartesian_coordinate_binary": {
+      "authoritative_input": "Stage 2 integer_vectors.npy",
+      "code_length": "3_times_ceil_log2_2q_plus_1",
+      "coordinate_order": [
+        "x",
+        "y",
+        "z"
+      ],
+      "coordinate_transform": "shift c to c+q",
+      "encoding_id": "cartesian_coordinate_binary",
+      "requantise_floating_vertices": false
+    },
+    "cartesian_coordinate_gray": {
+      "authoritative_input": "Stage 2 integer_vectors.npy",
+      "code_length": "3_times_ceil_log2_2q_plus_1",
+      "coordinate_order": [
+        "x",
+        "y",
+        "z"
+      ],
+      "coordinate_transform": "shift c to c+q then apply g(v)=v xor (v right_shift 1)",
+      "encoding_id": "cartesian_coordinate_gray",
+      "requantise_floating_vertices": false
+    },
+    "encoding_ids": [
+      "canonical_index_binary",
+      "canonical_index_gray",
+      "cartesian_coordinate_binary",
+      "cartesian_coordinate_gray"
+    ],
+    "excluded_from_stage3": [
+      "random_codebooks",
+      "random_hyperplanes",
+      "optimised_hyperplanes",
+      "affine_threshold_encoders",
+      "spherical_coordinate_codes",
+      "hierarchical_icosahedral_encoders",
+      "hilbert_or_space_filling_encoders",
+      "learned_hashing",
+      "neural_encoders",
+      "solver_generated_assignments"
+    ]
+  },
+  "bit_balance_diagnostics": {
+    "constant_bit_count": true,
+    "maximum_absolute_deviation_from_half": true,
+    "mean_absolute_deviation_from_half": true,
+    "per_bit_fraction_of_ones": true
+  },
+  "bit_redundancy_diagnostics": {
+    "complementary_pair_definition": "two distinct column positions are complementary when column_a equals 1-column_b exactly",
+    "constant_column_treatment": {
+      "duplicate_and_complementary_pair_counts": "include constant columns under the exact definitions",
+      "pearson_correlation": "exclude every pair containing a constant column"
+    },
+    "duplicate_pair_definition": "two distinct column positions are duplicates when their complete column arrays are exactly equal",
+    "maximum_absolute_pearson": {
+      "pair_domain": "all distinct nonconstant bit-column positions",
+      "undefined_value": null,
+      "undefined_when": "fewer than two nonconstant bit columns exist"
+    }
+  },
+  "code_length_reporting": {
+    "code_length": "m",
+    "excess_bits": "m_minus_m0",
+    "minimum_injective_length": "m0_equals_ceil_log2_N",
+    "raw_Lmax_cross_length_rule": "never compare raw L_max across different code lengths without reporting the length difference"
+  },
+  "collision_diagnostics": {
+    "collision_count": "N_minus_unique_codeword_count",
+    "largest_collision_class_size": true,
+    "multi_member_collision_class_count": true,
+    "stage3_acceptance_requires_zero_collisions": true,
+    "unique_codeword_count": true
+  },
+  "distances": {
+    "normalised_angular": {
+      "definition": "arccos(clip(dot(x,y),-1,1))/pi",
+      "range": [
+        0.0,
+        1.0
+      ]
+    },
+    "normalised_hamming": {
+      "definition": "raw_hamming_divided_by_code_length",
+      "usage": "global_angular_hamming_comparison"
+    },
+    "raw_hamming": {
+      "definition": "count_of_unequal_bit_positions",
+      "usage": "local_sensitivity"
+    }
+  },
+  "far_pairs": {
+    "inclusion_rule": "normalised_angular_distance_greater_than_or_equal_to_threshold",
+    "metrics": [
+      "pair_count",
+      "minimum_raw_hamming",
+      "mean_raw_hamming",
+      "minimum_normalised_hamming",
+      "mean_normalised_hamming"
+    ],
+    "threshold": 0.75
+  },
+  "frozen_at_starting_head": "8a4e70aeb0fb46d37c6e1d7d14f0219363cfe65c",
+  "global_metrics": {
+    "distortion": "absolute_difference_between_normalised_hamming_and_normalised_angular_distance",
+    "metrics": [
+      "unordered_pair_count",
+      "spearman_angular_hamming_correlation",
+      "mean_absolute_distortion",
+      "root_mean_squared_distortion",
+      "maximum_absolute_distortion",
+      "mean_normalised_hamming_distance",
+      "mean_normalised_angular_distance"
+    ],
+    "pair_order": "lexicographic_i_then_j",
+    "pair_rule": "all_unordered_pairs_i_less_than_j",
+    "subsampling_permitted": false
+  },
+  "hard_code_validity": {
+    "allowed_value_set": [
+      0,
+      1
+    ],
+    "allowed_value_types": [
+      "boolean",
+      "integer"
+    ],
+    "canonical_vertex_row_order_required": true,
+    "finite_and_nonmissing_required": true,
+    "injective_required_for_definitive_stage3_baselines": true,
+    "shape": "N_by_m",
+    "strictly_positive_code_length_required": true
+  },
+  "input": {
+    "stage2_archive_path": "results/archives/stage2-canonical-graphs-b0acb6e8683a-f2baeb7dbb50.tar.gz",
+    "stage2_archive_sha256": "30ff508a8b87c22808d6448fd7147017d6f65d8b52bb22b77b6b5304f8610a71",
+    "stage2_configuration_sha256": "b0acb6e8683a7d10cff99891c7346043de0ee7b3a0087cf71545d5df299eef01",
+    "stage2_manifest_path": "manifests/stage2-canonical-graphs-b0acb6e8683a-f2baeb7dbb50.json",
+    "stage2_package_path": "results/raw/stage2-canonical-graphs-b0acb6e8683a-f2baeb7dbb50",
+    "stage2_package_tree_scope": "80 deterministic files preceding package_metadata.json",
+    "stage2_package_tree_sha256": "24208510f0cc946ac3f5fc1108367234654ab95af685c2ffc41f1b39d3562ea7",
+    "stage2_run_id": "stage2-canonical-graphs-b0acb6e8683a-f2baeb7dbb50"
+  },
+  "local_metrics": {
+    "edge_order": "canonical_stage2_edges_row_order",
+    "histogram_domain": "every_integer_from_zero_through_code_length",
+    "metrics": [
+      "L_max",
+      "L_max_edge_count",
+      "L_99",
+      "L_95",
+      "L_mean",
+      "L_standard_deviation",
+      "L_minimum",
+      "complete_integer_histogram",
+      "edge_count"
+    ],
+    "percentiles": {
+      "implementation": "numpy_quantile",
+      "method": "higher",
+      "probabilities": [
+        0.99,
+        0.95
+      ]
+    },
+    "standard_deviation": {
+      "definition": "population_standard_deviation",
+      "numpy_ddof": 0
+    }
+  },
+  "outputs": {
+    "applicability_table_suffix": "_applicability.csv",
+    "baseline_summary_table_suffix": "_baseline_summary.csv",
+    "instance_files": [
+      "codes.npy",
+      "local_edge_hamming.npy",
+      "metrics.json"
+    ],
+    "local_histogram_table_suffix": "_local_histograms.csv",
+    "manifest_directory": "manifests",
+    "raw_directory": "results/raw",
+    "results_archive_directory": "results/archives",
+    "table_directory": "results/tables"
+  },
+  "ranking_and_correlation": {
+    "average_ranks_for_ties": true,
+    "pearson_implementation": "centred_dot_product_divided_by_product_of_centred_l2_norms",
+    "spearman_implementation": "pearson_correlation_between_deterministic_average_rank_arrays",
+    "undefined_constant_rank_variable": null
+  },
+  "reproduction": {
+    "deterministic_outputs_compared_byte_for_byte": true,
+    "independent_clean_detached_worktree_required": true,
+    "read_first_run_output_directory": false,
+    "runtime_fields_compared_semantically": true
+  },
+  "schema_version": 1,
+  "serialization": {
+    "allow_pickle": false,
+    "codes_dtype": "uint8",
+    "csv_encoding": "utf-8",
+    "csv_lineterminator": "LF",
+    "json_format": "canonical_pretty_json",
+    "local_edge_hamming_dtype": "int64",
+    "npy_format": "numpy_npy"
+  },
+  "stage": 3,
+  "stage_name": "Metrics and Deterministic Baseline Encodings"
+}

@@ -16,7 +16,10 @@ authoritative Stage 1 foundation commit and final acceptance audit.
 
 ## Current stage
 
-Stage 2 of 13, Canonical Sphere Graphs, is complete.
+Stage 3 of 13, Metrics and Deterministic Baseline Encodings, is active at
+the prospective metric-and-baseline freeze step.
+
+Stage 2 of 13, Canonical Sphere Graphs, remains complete and accepted.
 
 Stage 1 remains accepted at commit
 `05b2b96ef1e86fc2505d33cd0c5c916090267335`.
@@ -29,8 +32,44 @@ The definitive run identifier is:
 
 `stage2-canonical-graphs-b0acb6e8683a-f2baeb7dbb50`
 
-Stage 3 has not started. No definitive encoding metric, baseline encoding,
-optimisation, solver, or neural-encoder result has been generated.
+Stage 3 has begun only through the prospective definition freeze. No
+definitive encoding metric or baseline result has been generated, and no
+optimisation, solver, heuristic search or neural-encoder work has started.
+
+## Stage 3 prospective freeze record
+
+Stage 3 began from clean `main` at:
+
+`8a4e70aeb0fb46d37c6e1d7d14f0219363cfe65c`
+
+The prospective Stage 3 configuration is:
+
+`configs/stage3_baselines.json`
+
+Its SHA-256 under the repository's canonical configuration hashing rule is:
+
+`3fad68b97de95f82cbf65d31c9dc10d039efd375a9cf0f29f1a79396dbf77896`
+
+The freeze records:
+
+- exact hard-binary validity and injectivity requirements;
+- raw and normalised Hamming distance;
+- clipped normalised angular distance;
+- complete local metrics, `method="higher"` percentiles and `ddof=0`;
+- exhaustive unordered global pairs with no subsampling;
+- deterministic average ranks and explicit Spearman handling;
+- far-pair threshold `0.75`;
+- reuse of Stage 2 antipodal tolerance `1e-12`, with unique pairing;
+- collision, bit-balance and bit-redundancy diagnostics;
+- canonical-index binary and Gray baselines on all 13 graphs;
+- Cartesian-coordinate binary and Gray baselines on nine primitive graphs;
+- 44 applicable instances and eight explicit inapplicable combinations;
+- deterministic raw, table, manifest, archive and reproduction rules.
+
+Random threshold baselines and all other random, optimised, learned or
+solver-generated encoders are excluded from Stage 3.
+
+No definitive Stage 3 output existed when these decisions were frozen.
 
 ## Repository history
 
@@ -351,12 +390,14 @@ symmetric angular nearest-neighbour construction.
 
 No definitive graph output existed when this configuration was frozen.
 
-## Next stage
+## Active work and next boundary
 
-Stage 3 of 13: Metrics and Baseline Encodings.
+Active work is Stage 3 of 13: Metrics and Deterministic Baseline Encodings.
 
-Stage 3 may begin only after Stage 2 graph generation, validation, deterministic
-archiving, independent reproduction, scientific-output commit, and acceptance
-by the main project chat.
+The prospective freeze is the only Stage 3 work currently performed. The
+next controlled step is implementation of metric primitives and targeted
+tests.
 
-Stage 3 has not started.
+Stage 4 may not begin until Stage 3 implementation, definitive execution,
+independent reproduction, scientific-output commit and final acceptance
+are complete.
