@@ -1,0 +1,13 @@
+{
+  "baseline_upper_bound": 5,
+  "classification": "exact",
+  "code_length": 6,
+  "execution_order": 5,
+  "final_lower_bound": 2,
+  "final_upper_bound": 2,
+  "graph_id": "icosphere_l1",
+  "structural_lower_bound": 2,
+  "targets_attempted": 1,
+  "targets_planned": 3,
+  "unknown_target_count": 0
+}

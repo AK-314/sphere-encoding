@@ -1,0 +1,13 @@
+{
+  "baseline_upper_bound": 5,
+  "classification": "bounded",
+  "code_length": 9,
+  "execution_order": 21,
+  "final_lower_bound": 2,
+  "final_upper_bound": 5,
+  "graph_id": "primitive_q3_knn8",
+  "structural_lower_bound": 2,
+  "targets_attempted": 3,
+  "targets_planned": 3,
+  "unknown_target_count": 3
+}

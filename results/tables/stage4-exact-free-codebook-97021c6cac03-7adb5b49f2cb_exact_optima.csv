@@ -1,0 +1,10 @@
+execution_order,graph_id,code_length,exact_l_star_free
+1,icosphere_l0,4,2
+2,icosphere_l0,5,2
+3,icosphere_l0,6,2
+4,icosphere_l0,8,2
+5,icosphere_l1,6,2
+6,icosphere_l1,7,2
+7,icosphere_l1,8,2
+8,icosphere_l1,10,2
+10,primitive_q2_knn4,9,2

@@ -1,0 +1,47 @@
+{
+  "budget_seconds": 900,
+  "certifies_infeasibility": false,
+  "constraint_count": 4965,
+  "has_feasible_witness": true,
+  "model_sha256": "bc15a04268e33157ace96320e08eda8a1daf3a3834adf5f5c2b60e816d21be92",
+  "raw_status": "OPTIMAL",
+  "runtime": {
+    "branch_count": 105640,
+    "conflict_count": 1212,
+    "user_time_seconds": 13.123225000000001,
+    "wall_time_seconds": 13.123225000000001
+  },
+  "target_order_within_instance": 4,
+  "target_r": 5,
+  "validation": {
+    "codebook_sha256": "edebbc29b8fbcc1443060fd775418c8328cd1cd71ddf30f221e7a257029fa531",
+    "global_diagnostics": {
+      "antipodal_pairs": {
+        "antipodal_pair_count": 81,
+        "maximum_raw_hamming_distance": 7,
+        "mean_normalised_hamming_distance": 0.45267489711934156,
+        "mean_raw_hamming_distance": 4.074074074074074,
+        "minimum_normalised_hamming_distance": 0.1111111111111111,
+        "minimum_raw_hamming_distance": 1
+      },
+      "far_pairs": {
+        "far_pair_count": 1791,
+        "mean_normalised_hamming_distance": 0.4651653328370246,
+        "mean_raw_hamming_distance": 4.186487995533222,
+        "minimum_normalised_hamming_distance": 0.1111111111111111,
+        "minimum_raw_hamming_distance": 1
+      },
+      "global": {
+        "maximum_absolute_distortion": 0.8888888888888888,
+        "mean_absolute_distortion": 0.20928177712813575,
+        "mean_normalised_angular_distance": 0.5031055900540584,
+        "mean_normalised_hamming_distance": 0.43861667050072844,
+        "root_mean_squared_distortion": 0.25806575945237126,
+        "spearman_angular_hamming_correlation": 0.12414703628938364,
+        "unordered_pair_count": 13041
+      }
+    },
+    "maximum_edge_hamming_distance": 5
+  },
+  "variable_count": 5940
+}

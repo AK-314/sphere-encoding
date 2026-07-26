@@ -1,0 +1,18 @@
+{
+  "budget_seconds": 3600,
+  "certifies_infeasibility": false,
+  "constraint_count": 7733,
+  "has_feasible_witness": false,
+  "model_sha256": "6be4918802e3b462b0747c9e7484bf4f1645e0567516501cb3e9b7f4df45d545",
+  "raw_status": "UNKNOWN",
+  "runtime": {
+    "branch_count": 1800421,
+    "conflict_count": 51997,
+    "user_time_seconds": 3600.001631,
+    "wall_time_seconds": 3600.001631
+  },
+  "target_order_within_instance": 1,
+  "target_r": 2,
+  "validation": null,
+  "variable_count": 9596
+}

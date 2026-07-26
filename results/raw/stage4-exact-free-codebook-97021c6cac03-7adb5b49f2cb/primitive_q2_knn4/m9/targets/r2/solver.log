@@ -1,0 +1,105 @@
+Starting CP-SAT solver v9.15.6755Parameters: random_seed: 0 max_time_in_seconds: 3600 log_search_progress: true cp_model_presolve: true num_search_workers: 1Initial satisfaction model '': (model_fingerprint: 0x3de57971137d7068)
+#Variables: 3'356 (881 primary variables)
+  - 3'258 Booleans in [0,1]
+  - 98 in [0,511]
+#kAllDiff: 1
+#kLinMax: 2'376 (#expressions: 4'752)
+#kLinear1: 1
+#kLinearN: 362 (#terms: 3'356)
+#kTable: 1Starting presolve at 0.00s  1.95e-04s  0.00e+00d  [DetectDominanceRelations]   2.82e-03s  0.00e+00d  [PresolveToFixPoint] #num_loops=4 #num_dual_strengthening=1   1.10e-05s  0.00e+00d  [ExtractEncodingFromLinear] #potential_subsets=96   2.30e-05s  0.00e+00d  [DetectDuplicateColumns]   3.94e-04s  0.00e+00d  [DetectDuplicateConstraints] [Symmetry] Graph for symmetry has 12'418 nodes and 21'285 arcs.[Symmetry] Symmetry computation done. time: 0.001573 dtime: 0.00769533  3.82e-04s  0.00e+00d  [DetectDuplicateConstraintsWithDifferentEnforcements]   8.64e-03s  1.16e-03d  [Probe] #probed=6'468   4.00e-06s  0.00e+00d  [MaxClique]   1.83e-04s  0.00e+00d  [DetectDominanceRelations]   1.56e-03s  0.00e+00d  [PresolveToFixPoint] #num_loops=1 #num_dual_strengthening=1   1.41e-04s  0.00e+00d  [ProcessAtMostOneAndLinear]   3.74e-04s  0.00e+00d  [DetectDuplicateConstraints]   3.79e-04s  0.00e+00d  [DetectDuplicateConstraintsWithDifferentEnforcements]   4.70e-05s  1.02e-05d  [DetectDominatedLinearConstraints] #relevant_constraints=359 #num_inclusions=5   1.90e-05s  0.00e+00d  [DetectDifferentVariables]   2.10e-05s  0.00e+00d  [ProcessSetPPC] #relevant_constraints=359   2.24e-04s  0.00e+00d  [TransformClausesToExactlyOne]   4.00e-06s  0.00e+00d  [DetectEncodedComplexDomains]   1.30e-05s  0.00e+00d  [FindAlmostIdenticalLinearConstraints]   4.00e-06s  0.00e+00d  [FindBigAtMostOneAndLinearOverlap]   1.04e-04s  2.06e-04d  [FindBigVerticalLinearOverlap]   1.90e-05s  1.66e-05d  [FindBigHorizontalLinearOverlap] #linears=359   4.00e-06s  0.00e+00d  [MergeClauses]   1.83e-04s  0.00e+00d  [DetectDominanceRelations]   1.42e-03s  0.00e+00d  [PresolveToFixPoint] #num_loops=1 #num_dual_strengthening=1   1.76e-04s  0.00e+00d  [DetectDominanceRelations]   1.37e-03s  0.00e+00d  [PresolveToFixPoint] #num_loops=1 #num_dual_strengthening=1   2.70e-05s  0.00e+00d  [DetectDuplicateColumns]   3.87e-04s  0.00e+00d  [DetectDuplicateConstraints] [Symmetry] Graph for symmetry has 12'418 nodes and 21'285 arcs.[Symmetry] Symmetry computation done. time: 0.001609 dtime: 0.00769533  3.92e-04s  0.00e+00d  [DetectDuplicateConstraintsWithDifferentEnforcements]   8.55e-03s  1.16e-03d  [Probe] #probed=6'468   4.00e-06s  0.00e+00d  [MaxClique]   2.13e-04s  0.00e+00d  [DetectDominanceRelations]   1.45e-03s  0.00e+00d  [PresolveToFixPoint] #num_loops=1 #num_dual_strengthening=1   1.48e-04s  0.00e+00d  [ProcessAtMostOneAndLinear]   3.71e-04s  0.00e+00d  [DetectDuplicateConstraints]   3.61e-04s  0.00e+00d  [DetectDuplicateConstraintsWithDifferentEnforcements]   5.00e-05s  1.02e-05d  [DetectDominatedLinearConstraints] #relevant_constraints=359 #num_inclusions=5   2.00e-05s  0.00e+00d  [DetectDifferentVariables]   2.10e-05s  0.00e+00d  [ProcessSetPPC] #relevant_constraints=359   2.17e-04s  0.00e+00d  [TransformClausesToExactlyOne]   3.00e-06s  0.00e+00d  [DetectEncodedComplexDomains]   1.30e-05s  0.00e+00d  [FindAlmostIdenticalLinearConstraints]   4.00e-06s  0.00e+00d  [FindBigAtMostOneAndLinearOverlap]   9.00e-05s  2.06e-04d  [FindBigVerticalLinearOverlap]   1.80e-05s  1.66e-05d  [FindBigHorizontalLinearOverlap] #linears=359   4.00e-06s  0.00e+00d  [MergeClauses]   1.77e-04s  0.00e+00d  [DetectDominanceRelations]   1.38e-03s  0.00e+00d  [PresolveToFixPoint] #num_loops=1 #num_dual_strengthening=1   2.00e-06s  0.00e+00d  [MergeNoOverlap]   3.00e-06s  0.00e+00d  [MergeNoOverlap2D] Presolve summary:  - 80 affine relations were detected.  - rule 'TODO dual: only one blocking constraint?' was applied 13'740 times.  - rule 'affine: new relation' was applied 80 times.  - rule 'all_diff: propagate fixed expressions' was applied 1 time.  - rule 'all_diff: remove fixed expressions' was applied 1 time.  - rule 'lin_max: converted to equality' was applied 86 times.  - rule 'lin_max: removed exprs' was applied 7 times.  - rule 'lin_max: target domain reduced' was applied 7 times.  - rule 'linear1: x in domain' was applied 1 time.  - rule 'linear: always true' was applied 1 time.  - rule 'linear: divide by GCD' was applied 1 time.  - rule 'linear: empty' was applied 9 times.  - rule 'linear: fixed or dup variables' was applied 187 times.  - rule 'linear: reduced variable domains' was applied 4 times.  - rule 'linear: remapped using affine relations' was applied 12 times.  - rule 'new_bool: var with 2 values' was applied 1 time.  - rule 'presolve: 26 unused variables removed.' was applied 1 time.  - rule 'presolve: iteration' was applied 2 times.  - rule 'table: only one column!' was applied 1 time.  - rule 'table: reduce variable domain' was applied 1 time.  - rule 'variables with 2 values: create encoding literal' was applied 1 time.  - rule 'variables with 2 values: new affine relation' was applied 1 time.Presolved satisfaction model '': (model_fingerprint: 0xeed1d6d693fb89d2)
+#Variables: 3'251 (865 primary variables)
+  - 3'155 Booleans in [0,1]
+  - 96 in [1,511]
+#kAllDiff: 1
+#kLinMax: 2'290 (#expressions: 4'580)
+#kLinearN: 359 (#terms: 3'327)[Symmetry] Graph for symmetry has 12'312 nodes and 21'285 arcs.[Symmetry] Symmetry computation done. time: 0.001593 dtime: 0.00768897Preloading model.Starting search at 0.05s with 1 workers.1 full problem subsolver: [main]#1     1140.08s mainTask timing           n [     min,      max]      avg      dev     time         n [     min,      max]      avg      dev    dtime
+      'main':         1 [  19.00m,   19.00m]   19.00m   0.00ns   19.00m         1 [  19.98m,   19.98m]   19.98m   0.00ns   19.98m
+Search stats    Bools  Conflicts   Branches  Restarts  BacktrackToRoot  Backtrack  BoolPropag  IntegerPropag
+       'main':  3'155    103'025  8'566'390       321        3'033'608  3'242'032  20'322'155     46'964'930
+SAT formula    Fixed  Equiv  Total  VarLeft  BinaryClauses  PermanentClauses  TemporaryClauses
+      'main':      0      0  3'155    3'155             80             2'612             9'784
+SAT stats    ClassicMinim  LitRemoved  LitRemovedBinary  LitLearned  LitForgotten  Subsumed
+    'main':        55'769     237'209             9'887   7'423'232     6'185'538     5'796
+Vivification      Clauses  Decisions  LitTrue  Subsumed  LitRemoved  DecisionReused  Conflicts
+       'main':  1'071'749  5'967'170        0        33         466         165'844         10
+Clause deletion    at_true  l_and_not(l)  to_binary  sub_conflict  sub_extra  sub_decisions  sub_eager  sub_vivify  sub_probing  sub_inpro  blocked  eliminated  forgotten  promoted  conflicts
+          'main':        0             0          0         5'494        745             17        302          33            1         12        0           0     83'991   194'541    103'025
+Lp stats    Component  Iterations  AddedCuts  OPTIMAL  DUAL_F.  DUAL_U.
+   'main':          1  10'340'788     34'414  373'506       10   22'058
+Lp dimension       Final dimension of first component
+       'main':  2145 rows, 3251 columns, 8441 entries
+Lp debug    CutPropag  CutEqPropag  Adjust  Overflow      Bad  BadScaling
+   'main':         12           24  19'778         0  398'505           0
+Lp pool    Constraints  Updates  Simplif  Merged  Shortened  Split  Strengthened       Cuts/Call
+  'main':       14'336    1'366        0      17          0    145        46'092  34'414/162'433
+Lp Cut             main
+          CG_FF:  1'751
+           CG_K:    845
+          CG_KL:     72
+           CG_R:  2'989
+          CG_RB:    756
+         CG_RBP:    263
+             IB:  3'548
+       MIR_1_FF:  1'421
+        MIR_1_K:    530
+       MIR_1_KL:     32
+        MIR_1_R:    915
+       MIR_1_RB:    751
+       MIR_2_FF:  2'780
+        MIR_2_K:    635
+       MIR_2_KL:     98
+        MIR_2_R:    643
+       MIR_2_RB:    475
+      MIR_2_RBP:      5
+       MIR_3_FF:  1'841
+        MIR_3_K:    313
+       MIR_3_KL:     37
+        MIR_3_R:    408
+       MIR_3_RB:    318
+      MIR_3_RBP:      6
+       MIR_4_FF:    885
+        MIR_4_K:    238
+       MIR_4_KL:     27
+        MIR_4_R:    301
+       MIR_4_RB:    272
+      MIR_4_RBP:      2
+       MIR_5_FF:    393
+        MIR_5_K:    118
+       MIR_5_KL:     11
+        MIR_5_R:    199
+       MIR_5_RB:    149
+      MIR_5_RBP:      4
+       MIR_6_FF:    327
+        MIR_6_K:     89
+       MIR_6_KL:     10
+        MIR_6_R:    141
+       MIR_6_RB:    130
+      MIR_6_RBP:      9
+   ZERO_HALF_FF:  5'931
+    ZERO_HALF_K:    745
+    ZERO_HALF_R:  2'814
+   ZERO_HALF_RB:    166
+  ZERO_HALF_RBP:     21
+Solutions (1)    Num   Rank
+        'main':    1  [0,0]
+Solution repositories    Added  Queried  Synchro
+    'alternative_path':      0        0        0
+      'best_solutions':      1        0        1
+   'fj solution hints':      0        0        0
+LRAT_status: NACpSolverResponse summary:
+status: OPTIMAL
+objective: NA
+best_bound: NA
+integers: 3251
+booleans: 3155
+conflicts: 103025
+branches: 8566390
+propagations: 20322155
+integer_propagations: 46964930
+restarts: 321
+lp_iterations: 10340788
+walltime: 1140.09
+usertime: 1140.09
+deterministic_time: 1198.89
+gap_integral: 0
+solution_fingerprint: 0xc94291873180786d

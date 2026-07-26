@@ -1,0 +1,17 @@
+CpSolverResponse summary:
+status: OPTIMAL
+objective: 0
+best_bound: 0
+integers: 1096
+booleans: 1056
+conflicts: 5638
+branches: 100341
+propagations: 261057
+integer_propagations: 612417
+restarts: 18
+lp_iterations: 186204
+walltime: 7.83313
+usertime: 7.83313
+deterministic_time: 9.41639
+gap_integral: 0
+solution_fingerprint: 0x463b12bf090c5f61
