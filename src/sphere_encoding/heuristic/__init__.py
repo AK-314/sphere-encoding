@@ -48,17 +48,26 @@ from sphere_encoding.heuristic.scoring import (
 )
 from sphere_encoding.heuristic.search import (
     SearchError,
+    SearchKernelCheckpoint,
     SearchKernelConfig,
     SearchKernelResult,
     SearchStep,
     propose_move,
     run_search_kernel,
+    search_edges_sha256,
+    search_kernel_config_payload,
+    search_kernel_config_sha256,
 )
 from sphere_encoding.heuristic.state import (
     SearchState,
     SearchStateError,
     codeword_id_to_row,
     codeword_rows_to_ids,
+)
+from sphere_encoding.heuristic.verification import (
+    SearchVerificationReport,
+    VerificationError,
+    verify_search_result,
 )
 
 __all__ = [
@@ -79,16 +88,19 @@ __all__ = [
     "ScheduleError",
     "ScoringError",
     "SearchError",
+    "SearchKernelCheckpoint",
     "SearchKernelConfig",
     "SearchKernelResult",
     "SearchState",
     "SearchStateError",
     "SearchStep",
+    "SearchVerificationReport",
     "Stage5InstancePlan",
     "Stage5Plan",
     "Stage5TargetPlan",
     "SwapMove",
     "ThresholdScore",
+    "VerificationError",
     "acceptance_decision",
     "affected_edge_indices",
     "apply_evaluated_move",
@@ -106,6 +118,10 @@ __all__ = [
     "run_search_kernel",
     "score_codebook",
     "score_edge_distances",
+    "search_edges_sha256",
+    "search_kernel_config_payload",
+    "search_kernel_config_sha256",
     "stage5_plan_payload",
+    "verify_search_result",
     "zero_pad_state",
 ]
