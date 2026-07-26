@@ -1,0 +1,14 @@
+graph_id,code_length,baseline_method,L_max,mean_local_Hamming_distance,Spearman_angular_Hamming_correlation,mean_absolute_global_distortion
+icosphere_l0,4,canonical_index_gray,4,2.067,-0.122,0.257
+icosphere_l1,6,canonical_index_gray,5,2.300,0.218,0.195
+icosphere_l2,8,canonical_index_gray,8,3.208,0.136,0.207
+icosphere_l3,10,canonical_index_gray,10,3.808,0.153,0.199
+primitive_q2_knn4,9,cartesian_coordinate_gray,3,1.545,0.639,0.143
+primitive_q2_knn6,9,cartesian_coordinate_gray,3,1.714,0.639,0.143
+primitive_q2_knn8,9,cartesian_coordinate_gray,3,1.730,0.639,0.143
+primitive_q3_knn4,9,cartesian_coordinate_gray,5,1.871,0.492,0.158
+primitive_q3_knn6,9,cartesian_coordinate_gray,5,2.022,0.492,0.158
+primitive_q3_knn8,9,cartesian_coordinate_gray,5,2.119,0.492,0.158
+primitive_q4_knn4,12,cartesian_coordinate_gray,8,2.288,0.465,0.166
+primitive_q4_knn6,12,cartesian_coordinate_gray,8,2.286,0.465,0.166
+primitive_q4_knn8,12,cartesian_coordinate_gray,8,2.342,0.465,0.166

@@ -1,0 +1,3 @@
+graph_id,code_length,method,status,L_max
+primitive_q2_knn4,9,Cartesian-coordinate Gray,deterministic baseline,3
+primitive_q2_knn4,9,unrestricted injective codebook,exact optimum,2

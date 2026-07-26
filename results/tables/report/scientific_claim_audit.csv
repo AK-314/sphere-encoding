@@ -1,0 +1,6 @@
+claim,evidence,audit_status,required_qualification
+Nine Stage 4 graph-length instances have exact unrestricted optimum 2.,results/tables/stage4-exact-free-codebook-97021c6cac03-7adb5b49f2cb_exact_optima.csv (9 rows),verified,Finite frozen graph-length instances only.
+The 42-vertex icosphere has exact optimum 2 at six bits.,"results/tables/stage4-exact-free-codebook-97021c6cac03-7adb5b49f2cb_instance_bounds.csv; icosphere_l1,m=6",verified,Unrestricted lookup-table codebook; six bits is the injective minimum.
+Cartesian Gray is not locally optimal on primitive_q2_knn4 at nine bits.,results/tables/stage3-deterministic-baselines-3fad68b97de9-f07ae893574e_baseline_summary.csv and stage4-exact-free-codebook-97021c6cac03-7adb5b49f2cb_exact_optima.csv,verified,Same frozen graph and code length; no universal or asymptotic claim.
+Stage 5 is scientifically complete.,No definitive Stage 5 manifest or result package exists at report commit.,prohibited,Describe infrastructure and planned scope only.
+The full Stage 4 solver workload was independently rerun.,No second full solver execution is recorded.,prohibited,Witnesses can be independently verified without rerunning the workload.

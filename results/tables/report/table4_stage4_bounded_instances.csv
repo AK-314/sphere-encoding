@@ -1,0 +1,13 @@
+graph_id,code_length,pre_Stage_4_upper_bound,Stage_4_lower_bound,Stage_4_upper_bound,classification
+primitive_q2_knn4,7,6,2,3,bounded
+primitive_q2_knn6,7,6,2,3,bounded
+primitive_q2_knn6,9,3,2,3,bounded
+primitive_q2_knn8,7,6,2,4,bounded
+primitive_q2_knn8,9,3,2,3,bounded
+icosphere_l2,8,8,2,4,bounded
+icosphere_l2,9,8,2,3,bounded
+icosphere_l2,10,8,2,3,bounded
+icosphere_l2,12,8,2,4,bounded
+primitive_q3_knn4,9,5,2,4,bounded
+primitive_q3_knn6,9,5,2,5,bounded
+primitive_q3_knn8,9,5,2,5,bounded
