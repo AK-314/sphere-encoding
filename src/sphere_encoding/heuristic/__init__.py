@@ -1,5 +1,22 @@
 """Deterministic scalable free-codebook search primitives."""
 
+from sphere_encoding.heuristic.artifacts import (
+    EXACT_FIELDS,
+    INSTANCE_FIELDS,
+    NEGATIVE_RESULT_INTERPRETATION,
+    RUN_FIELDS,
+    TARGET_FIELDS,
+    ArtifactError,
+    HeuristicInstanceExecution,
+    HeuristicRunExecution,
+    HeuristicTargetExecution,
+    generate_stage5_artifacts,
+    load_run_artifacts,
+    write_instance_artifacts,
+    write_run_artifacts,
+    write_stage5_tables,
+    write_target_artifacts,
+)
 from sphere_encoding.heuristic.initialisation import (
     InitialisationError,
     InitialisationResult,
@@ -72,10 +89,19 @@ from sphere_encoding.heuristic.verification import (
 
 __all__ = [
     "CODE_LENGTH_OFFSETS",
+    "EXACT_FIELDS",
     "GRAPH_ORDER",
+    "INSTANCE_FIELDS",
+    "NEGATIVE_RESULT_INTERPRETATION",
+    "RUN_FIELDS",
+    "TARGET_FIELDS",
     "AcceptanceDecision",
+    "ArtifactError",
     "DirectStage4ExactPair",
     "GraphPlanningRecord",
+    "HeuristicInstanceExecution",
+    "HeuristicRunExecution",
+    "HeuristicTargetExecution",
     "IncrementalScoringState",
     "InitialisationError",
     "InitialisationResult",
@@ -111,6 +137,8 @@ __all__ = [
     "codeword_rows_to_ids",
     "derive_seed",
     "evaluate_move",
+    "generate_stage5_artifacts",
+    "load_run_artifacts",
     "load_stage3_baseline",
     "load_stage4_witness",
     "propose_move",
@@ -123,5 +151,9 @@ __all__ = [
     "search_kernel_config_sha256",
     "stage5_plan_payload",
     "verify_search_result",
+    "write_instance_artifacts",
+    "write_run_artifacts",
+    "write_stage5_tables",
+    "write_target_artifacts",
     "zero_pad_state",
 ]
