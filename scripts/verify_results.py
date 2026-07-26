@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify report claims, accepted archive identities, and Stage 4 witnesses."""
+"""Verify accepted archive identities, classifications, and exact witnesses."""
 
 from __future__ import annotations
 
@@ -99,10 +99,10 @@ def main() -> None:
     if witness_count != 36:
         raise SystemExit(f"expected 36 validated witnesses, found {witness_count}")
 
-    print("verified Stage 2-4 archive hashes and member counts")
-    print("verified 21 Stage 4 classifications: 9 exact and 12 bounded")
+    print("verified accepted graph, baseline, and exact-search archives")
+    print("verified 21 exact-search classifications: 9 exact and 12 bounded")
     print("verified headline nine-bit Cartesian Gray L_max=3")
-    print("independently recomputed all 36 archived Stage 4 witnesses")
+    print("independently recomputed all 36 archived exact witnesses")
 
 
 if __name__ == "__main__":
