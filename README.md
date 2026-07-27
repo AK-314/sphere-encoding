@@ -19,6 +19,7 @@ These are finite-graph results for unrestricted lookup-table codebooks. They do 
 ## Repository
 
 - `src/sphere_encoding/` — graph construction, encodings, metrics, exact optimisation, and scalable search
+- `examples/` — short CP-SAT programs and readable example codebooks
 - `configs/` — fixed experiment configurations
 - `results/` — accepted tables, arrays, codebooks, and deterministic archives
 - `manifests/` — hashes and identities for accepted result packages
@@ -33,6 +34,13 @@ Python 3.11 and [`uv`](https://docs.astral.sh/uv/) are used for the computationa
 uv sync --frozen
 uv run pytest
 uv run python scripts/verify_results.py
+```
+
+Small, runnable examples are collected in [`examples/`](examples/):
+
+```bash
+uv run python examples/threshold_cpsat.py
+uv run python examples/minimax_cpsat.py
 ```
 
 The verification command checks the accepted archive identities and independently recomputes injectivity and edge Hamming distances for all saved exact witnesses. Re-running the full exact optimisation is substantially more expensive and is kept separate from this lightweight check.
