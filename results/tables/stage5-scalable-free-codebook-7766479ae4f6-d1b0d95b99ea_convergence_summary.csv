@@ -1,0 +1,108 @@
+execution_order,graph_id,code_length,target_r,run_count,successful_run_count,success_rate,minimum_proposals_executed,median_proposals_executed,maximum_proposals_executed,earliest_success_proposal,selected_run_key,stopping_interpretation
+1,icosphere_l2,8,2,6,0,0.0,150000,150000.0,150000,,run_03_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+1,icosphere_l2,8,3,6,6,1.0,83075,93554.0,104959,83075,run_02_stage4_witness_restart_01,
+2,icosphere_l2,9,2,6,0,0.0,150000,150000.0,150000,,run_03_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+3,icosphere_l2,10,2,6,0,0.0,150000,150000.0,150000,,run_06_deterministic_random_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+4,icosphere_l2,12,2,6,0,0.0,150000,150000.0,150000,,run_01_stage4_witness_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+5,icosphere_l3,10,2,4,0,0.0,300000,300000.0,300000,,run_02_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+5,icosphere_l3,10,3,4,0,0.0,300000,300000.0,300000,,run_03_deterministic_random_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+5,icosphere_l3,10,4,4,4,1.0,224920,233131.5,244304,224920,run_01_stage3_baseline_restart_00,
+6,icosphere_l3,11,2,4,0,0.0,300000,300000.0,300000,,run_03_deterministic_random_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+6,icosphere_l3,11,3,4,0,0.0,300000,300000.0,300000,,run_02_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+6,icosphere_l3,11,4,4,3,0.75,235594,274528.0,300000,235594,run_03_deterministic_random_restart_00,
+7,icosphere_l3,12,2,4,0,0.0,300000,300000.0,300000,,run_02_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+7,icosphere_l3,12,3,4,0,0.0,300000,300000.0,300000,,run_04_deterministic_random_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+7,icosphere_l3,12,4,4,0,0.0,300000,300000.0,300000,,run_04_deterministic_random_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+7,icosphere_l3,12,5,4,4,1.0,194554,217591.5,231074,194554,run_01_stage3_baseline_restart_00,
+8,icosphere_l3,14,2,4,0,0.0,300000,300000.0,300000,,run_02_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+8,icosphere_l3,14,3,4,0,0.0,300000,300000.0,300000,,run_01_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+8,icosphere_l3,14,4,4,0,0.0,300000,300000.0,300000,,run_02_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+8,icosphere_l3,14,5,4,0,0.0,300000,300000.0,300000,,run_02_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+8,icosphere_l3,14,6,4,4,1.0,222234,238579.0,241429,222234,run_03_deterministic_random_restart_00,
+9,primitive_q2_knn4,7,2,6,0,0.0,150000,150000.0,150000,,run_02_stage4_witness_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+10,primitive_q2_knn4,8,2,6,0,0.0,150000,150000.0,150000,,run_05_deterministic_random_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+12,primitive_q2_knn6,7,2,6,0,0.0,150000,150000.0,150000,,run_01_stage4_witness_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+13,primitive_q2_knn6,8,2,6,0,0.0,150000,150000.0,150000,,run_04_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+14,primitive_q2_knn6,9,2,6,0,0.0,150000,150000.0,150000,,run_03_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+15,primitive_q2_knn6,11,2,6,0,0.0,150000,150000.0,150000,,run_03_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+16,primitive_q2_knn8,7,2,6,0,0.0,150000,150000.0,150000,,run_01_stage4_witness_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+16,primitive_q2_knn8,7,3,6,6,1.0,84397,86992.5,104285,84397,run_02_stage4_witness_restart_01,
+17,primitive_q2_knn8,8,2,6,0,0.0,150000,150000.0,150000,,run_05_deterministic_random_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+17,primitive_q2_knn8,8,3,6,6,1.0,85490,104046.0,126451,85490,run_03_stage3_baseline_restart_00,
+18,primitive_q2_knn8,9,2,6,0,0.0,150000,150000.0,150000,,run_04_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+19,primitive_q2_knn8,11,2,6,0,0.0,150000,150000.0,150000,,run_03_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+20,primitive_q3_knn4,9,2,6,0,0.0,250000,250000.0,250000,,run_04_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+20,primitive_q3_knn4,9,3,6,6,1.0,181106,198473.5,236441,181106,run_02_stage4_witness_restart_01,
+21,primitive_q3_knn4,10,2,6,0,0.0,250000,250000.0,250000,,run_04_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+21,primitive_q3_knn4,10,3,6,1,0.16666666666666666,218089,250000.0,250000,218089,run_03_stage3_baseline_restart_00,
+22,primitive_q3_knn4,11,2,6,0,0.0,250000,250000.0,250000,,run_03_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+22,primitive_q3_knn4,11,3,6,0,0.0,250000,250000.0,250000,,run_04_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+23,primitive_q3_knn4,13,2,6,0,0.0,250000,250000.0,250000,,run_04_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+23,primitive_q3_knn4,13,3,6,0,0.0,250000,250000.0,250000,,run_04_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+24,primitive_q3_knn6,9,2,4,0,0.0,250000,250000.0,250000,,run_02_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+24,primitive_q3_knn6,9,3,4,3,0.75,189714,238198.0,250000,189714,run_01_stage3_baseline_restart_00,
+25,primitive_q3_knn6,10,2,4,0,0.0,250000,250000.0,250000,,run_02_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+25,primitive_q3_knn6,10,3,4,0,0.0,250000,250000.0,250000,,run_02_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+25,primitive_q3_knn6,10,4,4,4,1.0,153708,165505.5,170810,153708,run_03_deterministic_random_restart_00,
+26,primitive_q3_knn6,11,2,4,0,0.0,250000,250000.0,250000,,run_01_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+26,primitive_q3_knn6,11,3,4,0,0.0,250000,250000.0,250000,,run_01_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+26,primitive_q3_knn6,11,4,4,4,1.0,151838,203127.0,224694,151838,run_02_stage3_baseline_restart_01,
+27,primitive_q3_knn6,13,2,4,0,0.0,250000,250000.0,250000,,run_01_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+27,primitive_q3_knn6,13,3,4,0,0.0,250000,250000.0,250000,,run_01_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+27,primitive_q3_knn6,13,4,4,0,0.0,250000,250000.0,250000,,run_02_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+28,primitive_q3_knn8,9,2,4,0,0.0,250000,250000.0,250000,,run_01_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+28,primitive_q3_knn8,9,3,4,0,0.0,250000,250000.0,250000,,run_01_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+28,primitive_q3_knn8,9,4,4,4,1.0,136801,157826.0,168407,136801,run_02_stage3_baseline_restart_01,
+29,primitive_q3_knn8,10,2,4,0,0.0,250000,250000.0,250000,,run_01_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+29,primitive_q3_knn8,10,3,4,0,0.0,250000,250000.0,250000,,run_02_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+29,primitive_q3_knn8,10,4,4,4,1.0,148416,167621.0,190901,148416,run_01_stage3_baseline_restart_00,
+30,primitive_q3_knn8,11,2,4,0,0.0,250000,250000.0,250000,,run_01_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+30,primitive_q3_knn8,11,3,4,0,0.0,250000,250000.0,250000,,run_01_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+30,primitive_q3_knn8,11,4,4,2,0.5,173612,231005.5,250000,173612,run_01_stage3_baseline_restart_00,
+31,primitive_q3_knn8,13,2,4,0,0.0,250000,250000.0,250000,,run_01_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+31,primitive_q3_knn8,13,3,4,0,0.0,250000,250000.0,250000,,run_01_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+31,primitive_q3_knn8,13,4,4,1,0.25,245721,250000.0,250000,245721,run_01_stage3_baseline_restart_00,
+32,primitive_q4_knn4,10,2,4,0,0.0,300000,300000.0,300000,,run_04_deterministic_random_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+32,primitive_q4_knn4,10,3,4,0,0.0,300000,300000.0,300000,,run_01_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+32,primitive_q4_knn4,10,4,4,4,1.0,214086,221102.5,237575,214086,run_02_stage3_baseline_restart_01,
+33,primitive_q4_knn4,11,2,4,0,0.0,300000,300000.0,300000,,run_04_deterministic_random_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+33,primitive_q4_knn4,11,3,4,0,0.0,300000,300000.0,300000,,run_02_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+33,primitive_q4_knn4,11,4,4,3,0.75,242994,268995.0,300000,242994,run_03_deterministic_random_restart_00,
+34,primitive_q4_knn4,12,2,4,0,0.0,300000,300000.0,300000,,run_02_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+34,primitive_q4_knn4,12,3,4,0,0.0,300000,300000.0,300000,,run_02_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+34,primitive_q4_knn4,12,4,4,0,0.0,300000,300000.0,300000,,run_02_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+34,primitive_q4_knn4,12,5,4,4,1.0,203592,211266.0,225950,203592,run_01_stage3_baseline_restart_00,
+35,primitive_q4_knn4,14,2,4,0,0.0,300000,300000.0,300000,,run_01_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+35,primitive_q4_knn4,14,3,4,0,0.0,300000,300000.0,300000,,run_01_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+35,primitive_q4_knn4,14,4,4,0,0.0,300000,300000.0,300000,,run_02_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+35,primitive_q4_knn4,14,5,4,2,0.5,289911,296454.5,300000,289911,run_02_stage3_baseline_restart_01,
+36,primitive_q4_knn6,10,2,4,0,0.0,300000,300000.0,300000,,run_02_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+36,primitive_q4_knn6,10,3,4,0,0.0,300000,300000.0,300000,,run_02_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+36,primitive_q4_knn6,10,4,4,4,1.0,204365,234413.5,254642,204365,run_04_deterministic_random_restart_01,
+37,primitive_q4_knn6,11,2,4,0,0.0,300000,300000.0,300000,,run_02_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+37,primitive_q4_knn6,11,3,4,0,0.0,300000,300000.0,300000,,run_01_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+37,primitive_q4_knn6,11,4,4,0,0.0,300000,300000.0,300000,,run_04_deterministic_random_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+37,primitive_q4_knn6,11,5,4,4,1.0,186307,198044.5,209062,186307,run_02_stage3_baseline_restart_01,
+38,primitive_q4_knn6,12,2,4,0,0.0,300000,300000.0,300000,,run_02_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+38,primitive_q4_knn6,12,3,4,0,0.0,300000,300000.0,300000,,run_01_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+38,primitive_q4_knn6,12,4,4,0,0.0,300000,300000.0,300000,,run_01_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+38,primitive_q4_knn6,12,5,4,4,1.0,214300,231570.0,250324,214300,run_02_stage3_baseline_restart_01,
+39,primitive_q4_knn6,14,2,4,0,0.0,300000,300000.0,300000,,run_02_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+39,primitive_q4_knn6,14,3,4,0,0.0,300000,300000.0,300000,,run_01_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+39,primitive_q4_knn6,14,4,4,0,0.0,300000,300000.0,300000,,run_02_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+39,primitive_q4_knn6,14,5,4,1,0.25,245887,300000.0,300000,245887,run_01_stage3_baseline_restart_00,
+40,primitive_q4_knn8,10,2,4,0,0.0,300000,300000.0,300000,,run_02_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+40,primitive_q4_knn8,10,3,4,0,0.0,300000,300000.0,300000,,run_04_deterministic_random_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+40,primitive_q4_knn8,10,4,4,3,0.75,239901,270297.5,300000,239901,run_02_stage3_baseline_restart_01,
+41,primitive_q4_knn8,11,2,4,0,0.0,300000,300000.0,300000,,run_02_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+41,primitive_q4_knn8,11,3,4,0,0.0,300000,300000.0,300000,,run_02_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+41,primitive_q4_knn8,11,4,4,0,0.0,300000,300000.0,300000,,run_03_deterministic_random_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+41,primitive_q4_knn8,11,5,4,4,1.0,191512,201631.5,214340,191512,run_01_stage3_baseline_restart_00,
+42,primitive_q4_knn8,12,2,4,0,0.0,300000,300000.0,300000,,run_01_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+42,primitive_q4_knn8,12,3,4,0,0.0,300000,300000.0,300000,,run_01_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+42,primitive_q4_knn8,12,4,4,0,0.0,300000,300000.0,300000,,run_01_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+42,primitive_q4_knn8,12,5,4,3,0.75,232362,240789.5,300000,232362,run_02_stage3_baseline_restart_01,
+43,primitive_q4_knn8,14,2,4,0,0.0,300000,300000.0,300000,,run_02_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+43,primitive_q4_knn8,14,3,4,0,0.0,300000,300000.0,300000,,run_01_stage3_baseline_restart_00,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+43,primitive_q4_knn8,14,4,4,0,0.0,300000,300000.0,300000,,run_02_stage3_baseline_restart_01,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+43,primitive_q4_knn8,14,5,4,1,0.25,278473,300000.0,300000,278473,run_02_stage3_baseline_restart_01,

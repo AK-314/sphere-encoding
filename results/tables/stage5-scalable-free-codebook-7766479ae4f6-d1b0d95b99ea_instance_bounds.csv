@@ -1,0 +1,44 @@
+execution_order,graph_id,code_length,mode,classification,accepted_lower_bound,accepted_upper_bound,final_lower_bound,final_upper_bound,targets_planned,targets_attempted,successful_target_count,exact_optimum_established,upper_bound_improvement,negative_result_interpretation
+1,icosphere_l2,8,heuristic_search,heuristic_upper_bound_improved,2,4,2,3,2;3,2;3,1,False,1,
+2,icosphere_l2,9,heuristic_search,no_direct_improvement,2,3,2,3,2,2,0,False,0,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+3,icosphere_l2,10,heuristic_search,no_direct_improvement,2,3,2,3,2,2,0,False,0,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+4,icosphere_l2,12,heuristic_search,no_direct_improvement,2,3,2,3,2,2,0,False,0,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+5,icosphere_l3,10,heuristic_search,heuristic_upper_bound_improved,2,10,2,4,2;3;4;5;6;7;8;9,2;3;4,1,False,6,
+6,icosphere_l3,11,heuristic_search,heuristic_upper_bound_improved,2,10,2,4,2;3;4;5;6;7;8;9,2;3;4,1,False,6,
+7,icosphere_l3,12,heuristic_search,heuristic_upper_bound_improved,2,10,2,5,2;3;4;5;6;7;8;9,2;3;4;5,1,False,5,
+8,icosphere_l3,14,heuristic_search,heuristic_upper_bound_improved,2,10,2,6,2;3;4;5;6;7;8;9,2;3;4;5;6,1,False,4,
+9,primitive_q2_knn4,7,heuristic_search,no_direct_improvement,2,3,2,3,2,2,0,False,0,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+10,primitive_q2_knn4,8,heuristic_search,no_direct_improvement,2,3,2,3,2,2,0,False,0,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+11,primitive_q2_knn4,11,accepted_transfer,exact_by_accepted_transfer,2,2,2,2,,,0,True,0,
+12,primitive_q2_knn6,7,heuristic_search,no_direct_improvement,2,3,2,3,2,2,0,False,0,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+13,primitive_q2_knn6,8,heuristic_search,no_direct_improvement,2,3,2,3,2,2,0,False,0,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+14,primitive_q2_knn6,9,heuristic_search,no_direct_improvement,2,3,2,3,2,2,0,False,0,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+15,primitive_q2_knn6,11,heuristic_search,no_direct_improvement,2,3,2,3,2,2,0,False,0,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+16,primitive_q2_knn8,7,heuristic_search,heuristic_upper_bound_improved,2,4,2,3,2;3,2;3,1,False,1,
+17,primitive_q2_knn8,8,heuristic_search,heuristic_upper_bound_improved,2,4,2,3,2;3,2;3,1,False,1,
+18,primitive_q2_knn8,9,heuristic_search,no_direct_improvement,2,3,2,3,2,2,0,False,0,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+19,primitive_q2_knn8,11,heuristic_search,no_direct_improvement,2,3,2,3,2,2,0,False,0,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+20,primitive_q3_knn4,9,heuristic_search,heuristic_upper_bound_improved,2,4,2,3,2;3,2;3,1,False,1,
+21,primitive_q3_knn4,10,heuristic_search,heuristic_upper_bound_improved,2,4,2,3,2;3,2;3,1,False,1,
+22,primitive_q3_knn4,11,heuristic_search,no_direct_improvement,2,4,2,4,2;3,2;3,0,False,0,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+23,primitive_q3_knn4,13,heuristic_search,no_direct_improvement,2,4,2,4,2;3,2;3,0,False,0,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+24,primitive_q3_knn6,9,heuristic_search,heuristic_upper_bound_improved,2,5,2,3,2;3;4,2;3,1,False,2,
+25,primitive_q3_knn6,10,heuristic_search,heuristic_upper_bound_improved,2,5,2,4,2;3;4,2;3;4,1,False,1,
+26,primitive_q3_knn6,11,heuristic_search,heuristic_upper_bound_improved,2,5,2,4,2;3;4,2;3;4,1,False,1,
+27,primitive_q3_knn6,13,heuristic_search,no_direct_improvement,2,5,2,5,2;3;4,2;3;4,0,False,0,No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.
+28,primitive_q3_knn8,9,heuristic_search,heuristic_upper_bound_improved,2,5,2,4,2;3;4,2;3;4,1,False,1,
+29,primitive_q3_knn8,10,heuristic_search,heuristic_upper_bound_improved,2,5,2,4,2;3;4,2;3;4,1,False,1,
+30,primitive_q3_knn8,11,heuristic_search,heuristic_upper_bound_improved,2,5,2,4,2;3;4,2;3;4,1,False,1,
+31,primitive_q3_knn8,13,heuristic_search,heuristic_upper_bound_improved,2,5,2,4,2;3;4,2;3;4,1,False,1,
+32,primitive_q4_knn4,10,heuristic_search,heuristic_upper_bound_improved,2,9,2,4,2;3;4;5;6;7;8,2;3;4,1,False,5,
+33,primitive_q4_knn4,11,heuristic_search,heuristic_upper_bound_improved,2,9,2,4,2;3;4;5;6;7;8,2;3;4,1,False,5,
+34,primitive_q4_knn4,12,heuristic_search,heuristic_upper_bound_improved,2,8,2,5,2;3;4;5;6;7,2;3;4;5,1,False,3,
+35,primitive_q4_knn4,14,heuristic_search,heuristic_upper_bound_improved,2,8,2,5,2;3;4;5;6;7,2;3;4;5,1,False,3,
+36,primitive_q4_knn6,10,heuristic_search,heuristic_upper_bound_improved,2,9,2,4,2;3;4;5;6;7;8,2;3;4,1,False,5,
+37,primitive_q4_knn6,11,heuristic_search,heuristic_upper_bound_improved,2,9,2,5,2;3;4;5;6;7;8,2;3;4;5,1,False,4,
+38,primitive_q4_knn6,12,heuristic_search,heuristic_upper_bound_improved,2,8,2,5,2;3;4;5;6;7,2;3;4;5,1,False,3,
+39,primitive_q4_knn6,14,heuristic_search,heuristic_upper_bound_improved,2,8,2,5,2;3;4;5;6;7,2;3;4;5,1,False,3,
+40,primitive_q4_knn8,10,heuristic_search,heuristic_upper_bound_improved,2,9,2,4,2;3;4;5;6;7;8,2;3;4,1,False,5,
+41,primitive_q4_knn8,11,heuristic_search,heuristic_upper_bound_improved,2,9,2,5,2;3;4;5;6;7;8,2;3;4;5,1,False,4,
+42,primitive_q4_knn8,12,heuristic_search,heuristic_upper_bound_improved,2,8,2,5,2;3;4;5;6;7,2;3;4;5,1,False,3,
+43,primitive_q4_knn8,14,heuristic_search,heuristic_upper_bound_improved,2,8,2,5,2;3;4;5;6;7,2;3;4;5,1,False,3,

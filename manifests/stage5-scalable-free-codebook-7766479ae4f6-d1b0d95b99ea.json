@@ -1,0 +1,97 @@
+{
+  "environment": {
+    "captured_at_utc": "2026-08-02T20:25:35.819508+00:00",
+    "machine": "arm64",
+    "operating_system": "Darwin",
+    "operating_system_release": "25.5.0",
+    "package_versions": {},
+    "python_executable": "/Users/alexkolesnikov/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/bin/python3.11",
+    "python_implementation": "CPython",
+    "python_version": "3.11.15"
+  },
+  "payload": {
+    "archive": {
+      "member_count": 4970,
+      "path": "results/archives/stage5-scalable-free-codebook-7766479ae4f6-d1b0d95b99ea.tar.gz",
+      "sha256": "761b34956e7a89fd7759c8f24b0744c57d67830cffa70eb7a466ef6e971c96fa",
+      "size_bytes": 21900245173
+    },
+    "classifications": {
+      "exact_by_accepted_transfer": 1,
+      "exact_by_heuristic_witness": 0,
+      "heuristic_upper_bound_improved": 28,
+      "no_heuristic_improvement": 14
+    },
+    "config": {
+      "configuration_sha256": "7766479ae4f6d564d99cb89a64bc9e32237f017143ecf60b96859de203874fa6",
+      "plan_sha256": "ba321fa4ad9bd52ca62bede811d1923395b6bb7d79fa9573a9afc6862f0e4618"
+    },
+    "deterministic_outputs": {
+      "figure_file_count": 5,
+      "figure_files": {
+        "stage5-scalable-free-codebook-7766479ae4f6-d1b0d95b99ea_figure_captions.txt": "69053bb0b3edba2762cbe84466f13776183adb3814e5daa91130bd4a3b7b802e",
+        "stage5-scalable-free-codebook-7766479ae4f6-d1b0d95b99ea_result_heatmap.pdf": "1fdf06c81c575914bd32231b0adea6a89c8d6769bd6d79a7fe31de1027c5e3bd",
+        "stage5-scalable-free-codebook-7766479ae4f6-d1b0d95b99ea_result_heatmap.png": "f252294c2d234c5bb8a6f10261770916d5ccd548239dab76047b360f071bd7cd",
+        "stage5-scalable-free-codebook-7766479ae4f6-d1b0d95b99ea_upper_bound_improvements.pdf": "d120639f06d85a3b9bfef6bdf9a669840edaa48aeb71bb6022fa5d016f63afda",
+        "stage5-scalable-free-codebook-7766479ae4f6-d1b0d95b99ea_upper_bound_improvements.png": "e229bb4d00ae067b09de9b4a83bb0f59fc332ffaca1772af9070e7107ab6fa83"
+      },
+      "figure_set_sha256": "a7310c83ba0920a5d25819e67161753d76d594233494906295e78e8cae84120c",
+      "package_file_count": 4957,
+      "package_metadata_path": "results/raw/stage5-scalable-free-codebook-7766479ae4f6-d1b0d95b99ea/package_metadata.json",
+      "package_metadata_sha256": "0d2cb2e226ec28ee84f349f169674ce6d62d6e46348a80c5133c63cc6f77d935",
+      "package_tree_sha256": "91c8f79e7dab1c690b8f175937e6a8f86e780edab487fbb99e7c94a5dfae025d",
+      "raw_package_path": "results/raw/stage5-scalable-free-codebook-7766479ae4f6-d1b0d95b99ea",
+      "table_file_count": 8,
+      "table_files": {
+        "stage5-scalable-free-codebook-7766479ae4f6-d1b0d95b99ea_baseline_comparison.csv": "3d57d5db1cef5a3b908ac00281575e0a1d03927f4c4991f67333504ff6fd29db",
+        "stage5-scalable-free-codebook-7766479ae4f6-d1b0d95b99ea_best_codebooks.csv": "ef269e9a92ee5da73fa7fb5f577d8ca7283dbc8f00d5e5cf43ed845059004180",
+        "stage5-scalable-free-codebook-7766479ae4f6-d1b0d95b99ea_convergence_summary.csv": "25afba9542fe0bead0ae500e13265bab5354b52ee23c12acce0fd0e04ad401eb",
+        "stage5-scalable-free-codebook-7766479ae4f6-d1b0d95b99ea_exact_optima.csv": "86f59cd6bbfd63718ce95af5cf0328cec2852da18c31e54446fa0c2b760d5c2b",
+        "stage5-scalable-free-codebook-7766479ae4f6-d1b0d95b99ea_instance_bounds.csv": "195de44047c30545e777445c58c6c09dcf455be3d177832246a825c74e7ba063",
+        "stage5-scalable-free-codebook-7766479ae4f6-d1b0d95b99ea_run_results.csv": "dc32435afa177ed93079165c016af817868923675053b168832629ff57aaa538",
+        "stage5-scalable-free-codebook-7766479ae4f6-d1b0d95b99ea_scientific_summary.json": "03f7e3b8a51a25c0a982a375bfaf70d05135ddd310bb82671aeb51486a364ded",
+        "stage5-scalable-free-codebook-7766479ae4f6-d1b0d95b99ea_target_results.csv": "55c2a1b1b3a7e15aa3e6be65a460d34b215ebb6c292cd4d8c2be4acc8a570590"
+      },
+      "table_set_sha256": "2f045a334a9da34c18a799096b913ba8e910d18c3bb00676106d2b97f5d7434b"
+    },
+    "implementation_commit": "d1b0d95b99ea959909e749831a091895142ff421",
+    "independent_reproduction": {
+      "completion_path": "/Users/alexkolesnikov/stage5-scalable-free-codebook-7766479ae4f6-d1b0d95b99ea-reproduction/REPRODUCTION_COMPLETE.json",
+      "completion_sha256": "acc808d8b64717213a777fa72d25937c0866e8f52f3cd6078378a28b96991fcd",
+      "marker_file_count": 478,
+      "marker_set_sha256": "95a4dad299307e970338471f0d6d4aabb08d3dadb6ffb69a70fb22ba40500058",
+      "reproduced_run_count": 478,
+      "status": "PASS",
+      "verifier_commit": "c628636098ca2e66c4568d765fcb68a70250a72c"
+    },
+    "instance_count": 43,
+    "manifest_path": "manifests/stage5-scalable-free-codebook-7766479ae4f6-d1b0d95b99ea.json",
+    "negative_result_interpretation": "No feasible witness was found within the frozen heuristic budget; this is not evidence of infeasibility or optimality.",
+    "plan_sha256": "ba321fa4ad9bd52ca62bede811d1923395b6bb7d79fa9573a9afc6862f0e4618",
+    "proposal_count": 114866074,
+    "run_count": 478,
+    "run_id": "stage5-scalable-free-codebook-7766479ae4f6-d1b0d95b99ea",
+    "scientific_summary": {
+      "improved_instance_count": 28,
+      "no_direct_improvement_count": 14,
+      "path": "results/tables/stage5-scalable-free-codebook-7766479ae4f6-d1b0d95b99ea_scientific_summary.json",
+      "sha256": "03f7e3b8a51a25c0a982a375bfaf70d05135ddd310bb82671aeb51486a364ded",
+      "successful_run_count": 99
+    },
+    "stage_name": "Scalable Free-Codebook Heuristic Search",
+    "target_count_attempted": 107,
+    "upstream_inputs": {
+      "manifests/stage2-canonical-graphs-b0acb6e8683a-f2baeb7dbb50.json": "240afd298c84fb2899285e0071f8b6a967e1de65adae60140700f773dab4db14",
+      "manifests/stage3-deterministic-baselines-3fad68b97de9-f07ae893574e.json": "6b872dd77ff111c9ddc387a87f9cf7f61cce8ed5d89c3d6f1c77b60277ff2509",
+      "manifests/stage4-exact-free-codebook-97021c6cac03-7adb5b49f2cb.json": "1a8c2d4078705ba1f6fb35d4900aff0094a470aaf710818efe3a94404b07ab16"
+    }
+  },
+  "repository": {
+    "branch": "main",
+    "clean": false,
+    "commit": "c628636098ca2e66c4568d765fcb68a70250a72c",
+    "root": "/Users/alexkolesnikov/Projects/sphere-encoding"
+  },
+  "schema_version": 1,
+  "stage": 5
+}
